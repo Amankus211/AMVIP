@@ -1,2 +1,0 @@
-# AMVIP
-amankus211
