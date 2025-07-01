@@ -63,7 +63,7 @@ body.addEventListener('touchend', onTouchEnd)
            
                 resultDiv.innerHTML = `<div class="success">Access Granted! Redirecting...</div>`;
                 setTimeout(() => {
-                    window.location.href = 'AM VIP 7-1 - gith'; // Redirect to main.html
+                    window.location.href = 'navig2.html'; // Redirect to main.html
                 }, 2000); // 2-second delay before redirecting
             } else {
                 resultDiv.innerHTML = `<div class="error">Access Denied!</div>`;
