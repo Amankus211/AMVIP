@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亗 Prediction AM VIP 亗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensures the body takes full height of the screen */
+        body, html {
+            background-image: url("bg.jpeg");
+            height: 100%;
+            margin: 0;  
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Overlay to cover the screen */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none; /* Initially hidden */
+        }
+
+        /* Blur effect for the background */
+        .blurred {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        /* Centering and styling for the popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to bottom, #740aba68, #0a944d58);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+
+        /* Close button with Tailwind */
+        .close-btn {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Styling for the input page (form) */
+        .form-container {
+            padding: 50px;
+            background-color: rgba(15, 52, 133, 0.659);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.657);
+            border-radius: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Overlay (darkens and blurs background) -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Popup Container -->
+    <div id="predictionPopup" class="popup">
+        <!-- Close Button (✖) -->
+        <div id="closePopupBtn" class="close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+
+        <!-- Badge -->
+        <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full bg-orange-300 flex items-center justify-center shadow-md">
+            <div class="bg-yellow-300 p-4 rounded-full flex items-center justify-center">
+              <!-- Using Rocket Emoji -->
+              <div class="text-center mt-4">
+                  <span class="text-6xl">🚀</span>
+              </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="text-center mt-8">
+            <h2 class="text-white font-bold text-lg">亗 Prediction AM VIP 亗</h2>
+        </div>
+
+        <!-- Lottery Results -->
+        <div class="flex items-center justify-center space-x-2 mt-4">
+            <div class="bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full">Result 1</div>
+            <div class="bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full">Result 2</div>
+            <div class="bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full">Result 3</div>
+        </div>
+
+        <!-- Bonus Section -->
+        <div class="text-center mt-6">
+            <p class="text-white text-xs mt-1">亗 Prediction AM VIP 亗</p>
+            <p class="text-white text-sm">Bet On</p>
+            <h1 id="predictionText" class="text-white font-bold text-3xl">SMALL,BIG</h1>
+       </div>
+        <link rel="stylesheet" href="walpp.css">
+        <!-- Auto Close Option -->
+        <div class="flex items-center justify-center mt-4">
+            <input type="radio" id="autoclose" name="autoclose" checked class="h-4 w-4 text-orange-600">
+            <label for="autoclose" class="ml-2 text-white text-sm">3 seconds auto close</label>
+        </div>
+    </div>
+
+    <!-- Input Form Section -->
+    <div class="flex items-center justify-center w-full h-full">
+
+        <div class="form-container">
+            <h1 class="text-center font-bold mb-4">亗 Prediction AM VIP 亗</h1>
+            <form id="predictionForm">
+                <div class="mb-4">
+                    <label for="result1" class="block text-sm font-semibold">Result 1</label>
+                    <input type="number" id="result1" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label for="result2" class="block text-sm font-semibold">Result 2</label>
+                    <input type="number" id="result2" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label for="result3" class="block text-sm font-semibold">Result 3</label>
+                    <input type="number" id="result3" class="w-full px-4 py-2 border rounded-lg" required>
+                </div>
+                <button type="submit" class="w-full bg-orange-500 text-white p-2 rounded-lg">亗 Prediction AM VIP 亗</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('predictionForm');
+        const popup = document.getElementById('predictionPopup');
+        const overlay = document.getElementById('overlay');
+        const predictionText = document.getElementById('predictionText');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+
+        let result1, result2, result3; // Declare variables for result values
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get the result values
+            result1 = parseInt(document.getElementById('result1').value);
+            result2 = parseInt(document.getElementById('result2').value);
+            result3 = parseInt(document.getElementById('result3').value);
+
+            // Ensure all inputs are valid numbers
+            if (isNaN(result1) || isNaN(result2) || isNaN(result3)) {
+                alert("Please enter valid numbers for all results.");
+                return;
+            }
+
+            // Calculate the sum
+            const sum = result1 + result2 + result3;
+
+            // Determine BIG or SMALL
+            let prediction;
+            if (sum > 20) {
+                prediction = "BIG"; // Change to BIG if desired logic
+            } else {
+                prediction = "SMALL";
+            }
+
+            // Set the prediction text in the popup
+            predictionText.textContent = prediction;
+
+            // Show the overlay and popup
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            // Apply blur effect to the form container
+            document.querySelector('.form-container').classList.add('blurred');
+
+            // Optionally auto-close after 3 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+                document.querySelector('.form-container').classList.remove('blurred');
+            }, 60000);
+
+            // Shift results after 5 seconds
+            shiftResults();
+        });
+
+        // Shift results function to move values
+        function shiftResults() {
+            setTimeout(() => {
+                document.getElementById('result1').value = ''; // Clear the 1st result box
+                document.getElementById('result2').value = result1; // Shift 1st result to 2nd result box
+                document.getElementById('result3').value = result2; // Shift 2nd result to 3rd result box
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        // Close button click event
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            document.querySelector('.form-container').classList.remove('blurred');
+        });
+
+    </script>
+
+</body>
+
+  </html>

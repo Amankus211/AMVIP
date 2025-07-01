@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+   
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #060c21;
+    font-family: 'Poppins', sans-serif;
+    
+}
+             h1, h2 {
+            color: #007bff;
+            text-align: center;
+            margin-top: 20px;
+  }
+        .card {
+            max-width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #444;
+            box-shadow: 3 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #dataTable, #predictionHistoryTable {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #666;
+        }
+        th {
+            background-color: #dd4040;
+            color: black;
+            font-weight: bold;
+        }
+        td {
+            background-color: #666;
+        }
+        tr:nth-child(even) td {
+            background-color: #777;
+        }
+        tr:hover td {
+            background-color: #888;
+        }
+        #predictionChart {
+            width: 100%;
+            height: 250px; /* Fixed height */
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            background-color: #555;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #df3d3d;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .pagination button:hover {
+            background-color: #e6b800;
+            transform: scale(1.05);
+        }
+        .pagination button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #timeRemaining {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #predictedNumber, #predictedPremium {
+            font-size: 18px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        button {
+    padding: 15px;
+    background: linear-gradient(45deg, #eb3f25, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 96%;
+    display: inline;
+    margin: 5px;
+    font-size: 1.1em;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s, background 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #eb3f25, #0072ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+        
+        .button-group a {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            color: white; /* Text color */
+            display: inline-block; /* Make anchor behave like a button */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #registerButton {
+            background-color: #007bff; /* Blue for Register */
+        }
+        #telegramButton {
+            background-color: #dc3545; /* Red for Telegram */
+        }
+        .button-group a:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .card {
+                padding: 15px;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            #timeRemaining {
+                font-size: 20px;
+            }
+            #predictedNumber, #predictedPremium {
+                font-size: 16px;
+            }
+            #predictionChart {
+                height: 200px; /* Adjusted height for mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            th, td {
+                font-size: 12px;
+            }
+            #timeRemaining {
+                font-size: 18px;
+            }
+            #predictedNumber, #predictedPremium {
+                font-size: 14px;
+            }
+            #predictionChart {
+                height: 180px; /* Further adjustment for very small screens */
+            }
+        }
+

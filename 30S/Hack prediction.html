@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亗 Prediction AM VIP 亗 </title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/BHz2N7dp/AMAN.jpg">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      <link rel="stylesheet" href="Hackstyles.css">
+</head>
+<body>
+    <!-- Particle animation background -->
+    <div id="particles-js"></div>
+
+    <!-- Prediction Page Content -->
+    <div class="prediction-container">
+         <div class="container"> 
+        <!-- Title with glowing effect and fade-in/fade-up animation -->
+       <h1 class="title">𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h1>
+
+        
+        <!-- Live Kolkata Time -->
+        <div class="time-box">
+            <span class="time-label">TIME:</span>
+            <div class="time">
+                <div class="time-unit">
+                    <span id="hours"></span>
+                    <p>Hours</p>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes"></span>
+                    <p>Minutes</p>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds"></span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Name -->
+        <div class="game-name">
+            Game Name: <span id="gameName">82 lottery</span>
+        </div>
+
+        
+        <!-- Period Entry -->
+        <div class="period-entry">
+            <label for="periodNumber">Period Number: 3 Digit</label>
+            <input type="text" id="periodNumber" maxlength="3" placeholder="XXX">
+              </div>
+
+        <!-- Get Result Button -->
+        <button class="action-button" id="getResultBtn">Get Result</button>
+   </div>
+        <!-- Version -->
+        <div class="version">Version: 1.1.1</div>
+
+
+    <!-- Pop-up for results -->
+    <div id="resultPopup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&#10006;</span>
+            <h2 id="popupTitle">亗 Prediction AM VIP 亗 </h2>
+            <div id="countdown" class="large-text"></div>
+            <div id="result" class="large-text hidden"></div>
+            <div id="result-buttons" class="popup-buttons hidden">
+                <button class="popup-btn loss-btn" onclick="showError('Loss')">Loss</button>
+                <button class="popup-btn win-btn" onclick="showError('Win')">Win</button>
+               </div>
+        </div>
+    </div>
+
+    <script src="Hackscripts.js"></script>
+
+    <!-- Background Animation Initialization -->
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 200, density: { enable: true, value_area: 800 }},
+          color: { value: "#ff0000" },
+          opacity: { value: 1, random: false },
+          size: { value: 5, random: true },
+          line_linked: { enable: true, distance: 150, color: "#ff0000", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 0.5 }
+        },
+        retina_detect: true
+      });
+
+      // Set the game name dynamically based on the selection from the setup page
+      const selectedGame = localStorage.getItem("selectedGame");
+      if (selectedGame) {
+          document.getElementById('gameName').innerText = selectedGame;
+      }
+
+      // Display live time in the format Hours:Minutes:Seconds
+      function updateTime() {
+          const now = new Date();
+          document.getElementById('hours').innerText = now.getHours().toString().padStart(2, '0');
+          document.getElementById('minutes').innerText = now.getMinutes().toString().padStart(2, '0');
+          document.getElementById('seconds').innerText = now.getSeconds().toString().padStart(2, '0');
+      }
+
+      setInterval(updateTime, 1000); // Update time every second
+    </script>
+</body>
+</html>

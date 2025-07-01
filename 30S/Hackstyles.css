@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General styling */
+body {
+  background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;
+    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 50px 0;
+  background: rgba(6, 19, 22, 0.393);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.905);
+  backdrop-filter: blur(2px);
+}
+
+
+/* Ensure particles.js animation fills the entire background */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keep it behind all content */
+}
+
+/* Scrolling system for content */
+.prediction-container {
+    text-align: center;
+    z-index: 1;
+    padding: 20px;
+    max-height: 100vh; /* Ensure container doesn't overflow the screen */
+    overflow-y: auto;  /* Enable vertical scrolling if content exceeds viewport height */
+}
+
+/* Title with glowing effect */
+.title {
+    color: aqua;
+    font-weight: bold;
+    font-size: 2.5rem; /* Reduced font size */
+    margin-bottom: 20px;
+    animation: fadeInUp 2s ease-in-out, glow 1s infinite alternate;
+}
+
+
+
+
+.time-label {
+    color: blue;
+    font-weight: bold;
+    font-size: 1.3rem; /* Reduced font size */
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.time-unit {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.time-unit span {
+    font-size: 2rem; /* Reduced font size */
+    font-weight: bold;
+    color: aqua;
+    border: 2px solid red;
+    padding: 10px;
+    display: block;
+    width: 90px;
+}
+
+.time-unit p {
+    color: white;
+    margin-top: 5px;
+    font-size: 1.1rem; /* Reduced font size */
+}
+
+/* Game Name */
+.game-name {
+    font-size: 1.7rem; /* Reduced font size */
+    color: aquamarine;
+    margin-bottom: 20px;
+}
+
+/* Version display */
+.version {
+    font-size: 1.7rem; /* Reduced font size */
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Period entry */
+.period-entry {
+    margin-bottom: 30px;
+}
+
+.period-entry label {
+    font-size: 1.3rem; /* Reduced font size */
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.period-entry input {
+    font-size: 1.3rem; /* Reduced font size */
+    padding: 10px;
+    width: 100px; /* Adjusted width */
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 5px;
+    color: black;
+}
+
+/* Action button */
+.action-button {
+    background-color: blue;
+    color: white;
+    padding: 12px 30px; /* Reduced padding */
+    font-size: 1.5rem; /* Reduced font size */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 20px blue;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+}
+
+/* Pop-up styling */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background-color: #000;
+    border: 2px solid blue;
+    padding: 25px; /* Reduced padding */
+    border-radius: 10px;
+    text-align: center;
+    width: 320px; /* Reduced width */
+    position: relative;
+}
+
+.popup-content h2 {
+    font-size: 1.6rem; /* Reduced font size */
+    color: white;
+    margin-bottom: 20px;
+}
+
+.large-text {
+    font-size: 3.5rem; /* Reduced font size */
+    font-weight: bold;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-btn {
+    padding: 10px 15px; /* Reduced padding */
+    font-size: 0.9rem; /* Reduced font size */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.loss-btn {
+    background-color: red;
+    color: white;
+}
+
+.win-btn {
+    background-color: green;
+    color: white;
+}
+
+.popup-btn:hover {
+    opacity: 0.8;
+}
+
+/* Close button */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.3rem; /* Reduced font size */
+    cursor: pointer;
+    color: white;
+
+}

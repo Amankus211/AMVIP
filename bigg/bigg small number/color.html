@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K3 WINGO PREDICTOR</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .rotating {
+            animation: rotate 1.5s linear infinite;
+        }
+        .blink {
+            animation: blink 1s ease-in-out infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen p-4 flex flex-col items-center">
+        <button onclick="window.location.href='/'" class="self-start mb-4 text-blue-400 hover:text-blue-300">
+            ← Back to Dashboard
+        </button>
+
+        <div class="w-full max-w-md">
+            <div class="text-center mb-6">
+                <div class="bg-blue-900/30 inline-block px-3 py-1 rounded-full mb-3">
+                    <span id="currentPeriod" class="text-blue-300 blink">Loading Period...</span>
+                </div>
+                <h1 class="text-2xl font-bold text-blue-400">1MIN 𝗪𝗜𝗡𝗚𝗢 </h1>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-6 space-y-6">
+                <div class="p-3 bg-gray-700 rounded-lg">
+                    <p class="text-gray-400">Current Period</p>
+                    <p id="resultPeriod" class="font-bold text-green-400">---</p>
+                </div>
+                
+                <div class="flex justify-center space-x-4">
+                    <div id="ball1" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center rotating"></div>
+                    <div id="ball2" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center rotating"></div>
+                    <div id="ball3" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center rotating"></div>
+                </div>
+
+                <div class="text-center">
+                     <div class="grid grid-cols-2 gap-4 text-center">
+                   
+                    <p class="text-gray-400">Total Sum</p>
+                        <p class="text-gray-400">Big/Small leve1-3</p>
+                    <div id="sumDisplay" class="text-3xl font-bold text-blue-400">--</div>
+                     <div class="p-3 bg-gray-700 rounded-lg">
+                                 <p id="bigSmall" class="font-bold">---</p>
+                </div>
+
+               
+                    
+           
+                    </div>
+                   
+                  
+        </div>
+    </div>
+
+    <script>
+        // Auto period number generation
+        function getCurrentPeriod() {
+            const now = new Date();
+            const totalMinutes = now.getHours() * 60 + now.getMinutes();
+            return now.getFullYear().toString() +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') +
+                "1000" +
+                String(10001 + totalMinutes - 330);
+        }
+
+        function updatePredictions() {
+            const periodNumber = getCurrentPeriod();
+            document.getElementById('currentPeriod').textContent = periodNumber;
+            document.getElementById('resultPeriod').textContent = periodNumber;
+
+            // Use period number as seed
+            const random = seededRandom(parseInt(periodNumber));
+            
+            const numbers = Array.from({length: 3}, () => 
+                Math.floor(random.next().value * 6) + 1
+            );
+            
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            
+            const bigSmall = sum >= 10 ? 'Small 🚀' : sum >= 4 ? 'Big ' : 'Invalid';
+            const oddEven = sum % 2 === 0 ? 'Even 🔵' : 'Odd 🔴';
+
+            numbers.forEach((num, index) => {
+                const ball = document.getElementById(`ball${index+1}`);
+                ball.classList.remove('rotating', 'bg-gray-700');
+                ball.textContent = num;
+                ball.style.backgroundColor = getNumberColor(num);
+            });
+
+            document.getElementById('sumDisplay').textContent = sum;
+            document.getElementById('bigSmall').innerHTML = bigSmall;
+            document.getElementById('oddEven').innerHTML = oddEven;
+        }
+
+        function getNumberColor(num) {
+            const colors = {
+                1: '#ef4444', 2: '#3b82f6', 3: '#22c55e',
+                4: '#eab308', 5: '#8b5cf6', 6: '#f97316'
+            };
+            return colors[num];
+        }
+
+        function* seededRandom(seed) {
+            let value = seed;
+            while(true) {
+                value = (value * 9301 + 49297) % 233280;
+                yield value / 233280;
+            }
+        }
+
+        // Initialize and update every minute
+        function init() {
+            updatePredictions();
+            setInterval(updatePredictions, 60000); // Update every minute
+        }
+
+        // Start the prediction system
+        init();
+        lucide.createIcons();
+    </script>
+</body>
+</html>

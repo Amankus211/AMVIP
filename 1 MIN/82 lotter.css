@@ -1,0 +1,175 @@
+/* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background: #060c21;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container Styling */
+        .container {
+            width: 360px;
+            background-color: #751e5550;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(255, 254, 255, 0);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+    margin: 5px 0;
+    background: rgba(6, 19, 22, 0.393);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.905);
+    backdrop-filter: blur(2px);
+        }
+
+        /* Safe Tag */
+        .safe-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 15px;
+            border: 2px solid #388E3C;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            z-index: 10;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Section */
+        .header {
+            font-size: 15px;
+            color: #666;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .online-users {
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        /* User Info */
+        .user-info {
+            font-size: 14px;
+            color: white;
+            margin-top: 5px;
+        }
+
+        /* Logo and Title */
+        .logo img {
+            max-width: 120px;
+            margin: 0 auto;
+            display: block;
+        }
+        .title {
+            font-size: 18px;
+            color: #4a90e2;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Instruction Boxes */
+        .instruction-box {
+            font-size: 15px;
+            color: #444;
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #e0f7fa;
+            color: #009688;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #b2dfdb;
+        }
+
+        /* Unique Button for Register */
+        .register-btn {
+            background-color: #ff7043;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .register-btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Details Section */
+        .details {
+            text-align: left;
+            font-size: 16px;
+        }
+        .details span {
+            font-weight: bold;
+        }
+        .details .mono {
+            font-family: monospace;
+        }
+
+        /* Fix Button Styling */
+        .fix-btn {
+            background-color: #009688;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .fix-btn:hover {
+            background-color: #00796b;
+        }
+input[type="text"],
+input[type="number"] {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+

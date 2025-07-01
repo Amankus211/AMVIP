@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DmWin Hack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/BHz2N7dp/AMAN.jpg">
+   <link rel="stylesheet" href="82 lotter.css">
+    
+<script defer data-domain="amvip.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script></head>
+<body>
+<div class="safe-tag">100% Safe</div>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <span></span>
+        <span class="online-users">Online Users: <span id="online-users">9984</span></span>
+    </div>
+    
+    <!-- User Info -->
+    <div class="user-info" id="user-info">User 760****736 Win ₹49793</div>
+    <div class="title">𓄂⍣⃝🦋Prediction AM VIP⍣⃟❤️‍🩹𝄟</div>
+    <!-- Logo -->
+    <div class="logo">
+        <img src="https://i.ibb.co/k6vFdG4H/7E.webp" alt="Dmwin Logo">
+    </div>
+    <div class="title">DmWin (hack)</div>
+
+    <!-- Input Section -->
+    <div class="input-group" id="period-input-group">
+        <span>Period:</span>
+        <input type="text" id="period-input" placeholder="Enter Period" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    </div>
+
+    <!-- Fix Button -->
+    <button id="fix-btn" class="fix-btn" onclick="fixPeriod()">START</button>
+
+    <!-- Details Section -->
+    <div id="details-section" class="details" style="display: none;">
+        <p><span>Mode:</span> WinGo(1m)</p>
+        <p><span>Remaining Time:</span> <span id="remaining-time-display" class="mono"></span></p>
+        <p><span>Period:</span> <span id="period-display" class="mono"></span></p>
+        <p><span>Result:</span> <span id="result-display" style="font-weight: bold;"></span></p>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instruction-box">
+        Create a new DmWin account by clicking on 'Register' button. If you use this mod in an old account, it may not work.
+    </div>
+    <div class="instruction-box">
+        👑亗 AM VIP 亗👑
+    </div>
+
+    <!-- Buttons -->
+    <button class="button register-btn" onclick="openRegister()">Register</button>
+    <button class="button" onclick="window.open('https://telegram.dog/Amank49', '_blank')">Join Telegram</button>
+    <button class="button" onclick="window.open('https://telegram.dog/AM_VIP_1', '_blank')">Customer Care</button>
+</div>
+
+<script>
+    let lastMinutePeriod = -1;
+    let lastMinuteResult = -1;
+    let periodFixed = false;
+    let initialPeriod = 0;
+
+    const results = [
+        "0 (Small) Violet", "1 (Small) Green", "2 (Small) Red", "3 (Small) Green", "4 (Small) Red",
+        "5 (Big) Violet", "6 (Big) Red", "7 (Big) Green", "8 (Big) Red", "9 (Big) Green"
+    ];
+
+    // Update online users every second
+    function updateOnlineUsers() {
+        document.getElementById("online-users").textContent = Math.floor(Math.random() * 10000) + 20000;
+    }
+
+    // Update winning user
+    function updateWinningUser() {
+        const part1 = Math.floor(Math.random() * 361) + 620;
+        const part2 = Math.floor(Math.random() * 260) + 621;
+        document.getElementById("user-info").textContent = `User ${part1}***${part2} Win ₹${Math.floor(Math.random() * 50000)}`;
+    }
+
+    // Fix the period
+    function fixPeriod() {
+        const periodInput = document.getElementById("period-input").value;
+
+        if (periodInput && periodInput !== "") {
+            initialPeriod = parseInt(periodInput);
+            document.getElementById("period-display").textContent = initialPeriod;
+            periodFixed = true;
+            document.getElementById("details-section").style.display = 'block';
+            document.getElementById("fix-btn").style.display = 'none';
+            document.getElementById("period-input-group").style.display = 'none';
+        }
+    }
+
+    // Update the period every minute
+    function updatePeriod() {
+        const now = new Date();
+        const minute = now.getMinutes();
+
+        if (minute !== lastMinutePeriod) {
+            lastMinutePeriod = minute;
+
+            if (periodFixed) {
+                initialPeriod += 1; // Increment the fixed period by 1
+                document.getElementById("period-display").textContent = initialPeriod;
+            } else {
+                document.getElementById("period-display").textContent = minute; // Show current minute if not fixed
+            }
+        }
+    }
+
+    // Update remaining time
+    function updateRemainingTime() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        document.getElementById("remaining-time-display").textContent = `${59 - seconds}s`;
+    }
+
+    // Update results every minute
+    function updateResults() {
+        const now = new Date();
+        const minute = now.getMinutes();
+
+        if (minute !== lastMinuteResult) {
+            lastMinuteResult = minute;
+            const randomResult = Math.floor(Math.random() * results.length);
+            document.getElementById("result-display").textContent = results[randomResult];
+        }
+    }
+
+    // Realtime updates
+    setInterval(() => {
+        updateOnlineUsers();
+        updateWinningUser();
+        updatePeriod();
+        updateRemainingTime();
+        updateResults();
+    }, 1000);
+
+    // Open register link
+    function openRegister() {
+        window.open('https://dmwin1.com/#/register?invitationCode=45358397775', '_blank');
+    }
+</script>
+
+</body>
+</html>

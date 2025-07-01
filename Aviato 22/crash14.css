@@ -1,0 +1,245 @@
+
+* {
+margin: 0;
+padding: 0;
+box-sizing:border-box;
+
+}
+
+img{
+    scale: 1;
+}
+
+html,body{
+height:100%;
+width:100%;
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    width: 80%;
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-bottom: 50px;
+   }
+   
+   button:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+   }
+   
+   button:main, button:focus {
+    user-select: auto;
+   }
+   
+   button:hover:not(:disabled) {
+    filter: brightness(1.1);
+   }
+   
+   button:disabled {
+    cursor: auto;
+   }
+   
+   button:active:after {
+    border-width: 0 0 0px;
+   }
+   
+   button:active {
+    padding-bottom: 10px;
+   }
+
+
+   body {
+    background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+       background-size:cover; 
+       color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    }
+
+   
+   #container {
+       display: flex;
+       justify-content: space-between;
+       flex-direction: column;
+       align-items: center;
+       height: 100vh;
+       width: 100%;
+       position: relative;
+   }
+   
+   #rocket {
+       
+       position: absolute;
+       bottom: 0;
+       transition: bottom 1s linear;
+   }
+   
+   #randomNumber {
+       font-size: 98px;
+       font-weight: bold;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       opacity: 1;
+       transition: opacity 1s ease-in-out;
+   }
+  .card {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+
+.box {
+
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 12px;
+    text-align: center;
+    width: 96%;
+    color: rgba(253, 253, 253, 0.965);
+    margin-bottom: 20px;
+  
+   
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;/* Behind the content */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 96%;
+    max-width: 350px;
+    padding: 50px;
+    margin: 5px 0;
+    background: rgba(6, 19, 22, 0.393);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.905);
+    backdrop-filter: blur(2px);
+}
+  .cardimg {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    width: 40%;
+    height: 90%;
+    background-color: rgb(26, 26, 26);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .cardimg img {
+    max-width: 80%;
+    max-height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+  }
+  
+  .cardinfo {
+    padding: 10px;
+    width: 60%;
+    height: 90%;
+    background-color: rgb(26, 26, 26);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cardinfo h5 {
+    text-align: left;
+    margin-top:40px;
+  }
+  
+  .card button {
+    width: 100%;
+   
+  }
+  .popup-overlay {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 30vh;
+    max-width: 700px;
+    text-align: center;
+  }
+  
+  .popup-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(26, 26, 66);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 3.8vw;
+    height: 96%;
+    width: 96%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  
+  #closePopup {
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,178 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/BHz2N7dp/AMAN.jpg">
+    <style>
+        /* General Styles */
+        * {
+          margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-image: url("https://i.ibb.co/BHz2N7dp/AMAN.jpg");
+      font-family: Arial, sans-serif;
+      color: #e4c132;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            width: 50%;
+            max-width: 5px;
+            padding: 3px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(13, 147, 184, 0.934);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+      .linear2 {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    .linear3 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    .linear4 {
+      width: 300px;
+      height: 350px;
+      margin-top: 0px;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 14px;
+      border: 3px solid #00FFF0;
+      box-shadow: 0 0 10px #00FFF0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .linear5 {
+      width: 200px;
+      height: 200px;
+      margin-top: 5px;
+      padding: 8px;
+      background: rgba(30, 1, 1, 0.75);
+      border-radius: 13px;
+      border: 5px solid #00FFF0;
+      box-shadow: 0 0 10px #00FFF0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00FFF0;
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button {
+    padding: 7.5px;
+    background: linear-gradient(45deg, #25e5eb, #00b3ff78);
+    border-radius: 15px;
+    border: none;
+    width: 45%;
+    display: inline;
+    margin: 5px;
+    font-size: 1.1em;
+    }
+    .text {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .period {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .period label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .time-display {
+      margin-top: 20px;
+      font-size: 16px;
+ 
+ }
+        
+    </style>
+</head>
+<body>
+        <div class="shadow-box">
+            <div class="container">
+                <div class="linear2"></div>
+                <div class="linear3">
+                  <div class="linear4">
+                    
+                    <div class="text">𝙲𝚘𝚗𝚗𝚎𝚌𝚝𝚎𝚍 𝚝𝚘 𝚝𝚑𝚎 𝙿𝚛𝚒𝚟𝚊𝚝𝚎<br>𝚂𝚎𝚛𝚟𝚎𝚛</div>
+                    <div class="text">𓄂⍣⃝🦋TASHAN WIN AM VIP⍣⃟❤️‍🩹𝄟</div>
+                    <div class="linear5">
+                      <span id="result">𝚁𝚎𝚜𝚞𝚕𝚝</span>
+                    </div>
+                    <div class="period">
+                      <label for="period1m">𝙿𝚎𝚛𝚒𝚘𝚍 𝙽𝚘:</label>
+                      <span id="period1m">Loading...</span>
+                    </div>
+                    <div id="textview5" class="time-display">Time: </div>
+                    <button id="button2" class="button">𝙲𝙷𝙰𝙽𝙶𝙴</button>
+                  </div>
+                </div>
+              </div>
+              <script>
+                const ss = new Map(); // Simulated storage for period checks
+            
+                // Period number generator
+                setInterval(() => {
+                  const now = new Date();
+                  const totalMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+                  document.getElementById('period1m').innerText = String(10001 + totalMinutes).padStart(5, '0');
+                }, 60000);
+            
+                // Time display
+                setInterval(() => {
+                  const now = new Date();
+                  document.getElementById('textview5').innerText = now.toLocaleTimeString();
+                }, 1000);
+            
+                // Button click handler
+                document.getElementById('button2').addEventListener('click', () => {
+                  const period = document.getElementById('period1m').innerText;
+                  const result = document.getElementById('result');
+            
+                  if (ss.get(period) === 'true') {
+                    alert('Wait for new period...');
+                  } else {
+                    ss.set(period, 'true');
+                    result.innerText = '𝙻𝚘𝚊𝚍𝚒𝚗𝚐...';
+            
+                    setTimeout(() => {
+                      // Random number generator for trend
+                      const randomNumber = Math.floor(Math.random() * 10);
+                      const trend = randomNumber <= 4 ? '𝚂𝙼𝙰𝙻𝙻' : '𝙱𝙸𝙶';
+                      result.innerText = trend;
+                      console.log(`Random number: ${randomNumber}`);
+                      console.log(`Predicted trend: ${trend}`);
+                    }, 4500);
+                  }
+                });
+
+</script>
