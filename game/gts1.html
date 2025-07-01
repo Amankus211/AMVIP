@@ -1,0 +1,185 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ai.css">
+
+    <title>AM VIP S2</title>
+   
+</head>
+<body>
+
+    <div id="mainApp">
+        <h1>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟 S2</h1>
+
+        <div class="card">
+            <div class="title">🟡 Current Prediction</div>
+            <p>🕒 <strong>Countdown:</strong> <span id="countdown">60</span>s</p>
+           
+            <h2>📅 Period: <span id="currentPeriod">-</span></h2>
+            <h2>📊 Result: <span id="currentResult">-</span></h2>
+        </div>
+
+        <div class="card">
+            <h2>Analysis</h2>
+            <div class="stat">
+                <span>Win Count</span>
+                <span id="totalWins">0</span>
+            </div>
+            <div class="stat">
+                <span>Loss Count</span>
+                <span id="totalLosses">0</span>
+            </div>
+            <div class="stat">
+                <span>Win %</span>
+                <span id="accuracy">0%</span>
+            </div>
+            <div class="stat">
+                <span>Auto-Reverse</span>
+                <span>Inactive</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>History</h2>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Prediction</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let historyData = [];
+        let totalWins = 0;
+        let totalLosses = 0;
+        let lastFetchedPeriod = null;
+
+        // Function to fetch game result
+        async function fetchGameResult() {
+            try {
+                let response = await fetch("https://api.bdg88zf.com/api/webapi/GetNoaverageEmerdList", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        pageSize: 10,
+                        pageNo: 1,
+                        typeId: 1,
+                        language: 0,
+                        random: "4a0522c6ecd8410496260e686be2a57c",
+                        signature: "334B5E70A0C9B8918B0B15E517E2069C",
+                        timestamp: Math.floor(Date.now() / 1000)
+                    })
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                let data = await response.json();
+                let latestResult = data?.data?.list?.[0];
+                if (latestResult) {
+                    return { period: latestResult.issueNumber, result: latestResult.number };
+                } else {
+                    throw new Error("No data found in API response");
+                }
+            } catch (error) {
+                console.error("Error fetching game result:", error);
+                return null;
+            }
+        }
+
+        // Algorithm: Trend Analysis
+        function trendAnalysis(history) {
+            let bigCount = history.filter(item => item.result >= 5).length;
+            let smallCount = history.filter(item => item.result < 5).length;
+            return bigCount > smallCount ? "BIG" : "SMALL";
+        }
+
+        // Function to update prediction
+        async function updatePrediction() {
+            let apiResult = await fetchGameResult();
+            if (apiResult && apiResult.period !== lastFetchedPeriod) {
+                lastFetchedPeriod = apiResult.period;
+                let currentPeriod = (BigInt(apiResult.period) + 1n).toString();
+                let prediction = trendAnalysis(historyData);
+
+                document.getElementById("currentPeriod").innerText = currentPeriod;
+                document.getElementById("currentResult").innerText = apiResult.result >= 5 ? "BIG" : "SMALL";
+
+                historyData.unshift({ period: currentPeriod, prediction: prediction, result: apiResult.result, status: "Pending" });
+                updateHistory();
+                checkWinLoss(apiResult);
+            }
+        }
+
+        // Function to check win/loss
+        function checkWinLoss(apiResult) {
+            if (!apiResult) return;
+
+            historyData.forEach(item => {
+                if (item.period === apiResult.period) {
+                    let actualResult = apiResult.result >= 5 ? "BIG" : "SMALL";
+                    item.status = (item.prediction === actualResult) ? "WIN" : "LOSS";
+                }
+            });
+
+            updateStats();
+            updateHistory();
+        }
+
+        // Function to update stats
+        function updateStats() {
+            totalWins = historyData.filter(item => item.status === "WIN").length;
+            totalLosses = historyData.filter(item => item.status === "LOSS").length;
+
+            let accuracy = totalWins / (totalWins + totalLosses) * 100 || 0;
+            document.getElementById("totalWins").innerText = totalWins;
+            document.getElementById("totalLosses").innerText = totalLosses;
+            document.getElementById("accuracy").innerText = accuracy.toFixed(2) + '%';
+        }
+
+        // Function to update history table
+        function updateHistory() {
+            let historyTable = document.getElementById("historyTable");
+            historyTable.innerHTML = "";
+            historyData.forEach(item => {
+                let statusClass = item.status === "WIN" ? "win" : (item.status === "LOSS" ? "loss" : "pending");
+                historyTable.innerHTML += `
+                    <tr>
+                        <td>${item.period}</td>
+                        <td>${item.prediction}</td>
+                        <td class="${statusClass}">${item.status}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Update every second
+        setInterval(updatePrediction, 1000);
+    
+    // Countdown Timer
+        function startCountdown() {
+            let counter = 60;
+            setInterval(() => {
+                counter--;
+                document.getElementById("countdown").innerText = counter;
+                if (counter === 0) {
+                    counter = 60;
+                    updatePrediction();  // Refresh prediction every 60 seconds
+                }
+            }, 1000);
+        }
+
+        updatePrediction();
+        startCountdown();
+    
+    </script>
+</body>
+

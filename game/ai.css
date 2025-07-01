@@ -1,0 +1,203 @@
+.body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #mainApp {
+            max-width: 360px;
+            margin: 0 auto;
+            background: #f5fff5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #b2e6b2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #009900;
+        }
+
+        .card {
+            background: #eaffea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #b2e6b2;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .history-table th, .history-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .win {
+            color: green;
+            font-weight: bold;
+        }
+
+        .loss {
+            color: red;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: orange;
+            font-weight: bold;
+        }
+
+
+
+
+/* General Styles */
+
+body {
+    background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main Container */
+#mainApp {
+    max-width: 450px;
+    margin: auto;
+    background: #3335;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 150, 0, 0.1);
+    border: 2px solid #a3dca3;
+}
+
+/* Title */
+h1 {
+    font-size: 24px;
+    color: #008800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Card Styles */
+.card {
+    background: #f7fff5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 100, 0, 0.1);
+    border: 1px solid #a3dca3;
+    text-align: left;
+}
+
+/* Section Headings */
+.card h2 {
+    font-size: 18px;
+    color: blueviolet;
+    margin-bottom: 10px;
+}
+
+/* Statistics */
+.stat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    background: aqua;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* History Table */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.history-table th, .history-table td {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.history-table th {
+    background: #d6ffd6;
+    color: #006600;
+    text-transform: uppercase;
+}
+
+.history-table tr:hover {
+    background: aqua;
+}
+
+/* Status Colors */
+.win {
+    color: green;
+    font-weight: bold;
+}
+
+.loss {
+    color: red;
+    font-weight: bold;
+}
+
+.pending {
+    color: orange;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 878px) {
+    body {
+        padding: 10px;
+    }
+    
+    #mainApp {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+    .stat {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .history-table th, .history-table td {
+        font-size: 12px;
+        padding: 6px;
+    }

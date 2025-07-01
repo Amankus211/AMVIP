@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亗 AM VIP 亗</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px #00ff00, 0 0 20px #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .status-box {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 15px;
+            background: #111111;
+            box-shadow: 0 0 15px #00ff00;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .status-text {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .status-loading {
+            font-size: 1rem;
+            color: #ffff00;
+            text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00;
+            margin: 10px 0;
+        }
+
+        .result-table, .history-table {
+            width: 80%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .result-table th, .result-table td,
+        .history-table th, .history-table td {
+            border: 2px solid yellow;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .result-table th, .history-table th {
+            background-color: #333333;
+            color: #ffcc00;
+            font-size: 1.2rem;
+        }
+
+        .result-table td, .history-table td {
+            background-color: #111111;
+            color: #00ff00;
+            font-size: 1rem;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <h1>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h1>
+
+    <div class="status-box">
+        <div class="status-text" id="server-status">STATUS: ACTIVE</div>
+        <div class="status-text" id="server-message">LOADING SERVER...</div>
+        <div class="status-loading" id="loading-progress">Loading: 0%</div>
+    </div>
+
+    <table class="result-table">
+        <thead>
+            <tr>
+                <th>Period Number</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody id="result-body">
+            <tr>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Result History</h2>
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Period Number</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody id="history-body">
+        </tbody>
+    </table>
+
+    <div class="footer"> 👑亗 AM VIP 亗👑</div>
+
+    <script>
+        let loadingProgress = 0;
+        let currentPeriod = null;
+        let resultsPattern = ["SMALL", "BIG", "SMALL", "BIG", "SMALL", "SMALL", "BIG", "SMALL", "BIG", "BIG", "SMALL", "BIG", "SMALL", "SMALL"];
+        let resultIndex = 0;
+
+        function getPeriodNumber() {
+            const now = new Date();
+            const totalMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+            return `${now.getUTCFullYear()}${String(now.getUTCMonth() + 1).padStart(2, '0')}${String(now.getUTCDate()).padStart(2, '0')}1000${(10001 + totalMinutes)}`;
+        }
+
+        function updateLoadingProgress() {
+            const loadingProgressText = document.getElementById("loading-progress");
+            loadingProgress += 20;
+            loadingProgressText.innerText = `Loading: ${loadingProgress}%`;
+
+            if (loadingProgress === 100) {
+                document.getElementById("server-message").innerText = "SERVER CONNECTED";
+                setTimeout(showResult, 2000);
+                loadingProgress = 0; // Reset for the next period
+            }
+        }
+
+        function showResult() {
+            const newPeriod = getPeriodNumber();
+
+            // Check if period has changed
+            if (currentPeriod !== newPeriod) {
+                currentPeriod = newPeriod;
+                const result = resultsPattern[resultIndex];
+                resultIndex = (resultIndex + 1) % resultsPattern.length;
+
+                // Update result table
+                const resultBody = document.getElementById("result-body");
+                resultBody.innerHTML = `
+                    <tr>
+                        <td>${currentPeriod}</td>
+                        <td>${result}</td>
+                    </tr>
+                `;
+
+                // Add to result history
+                const historyBody = document.getElementById("history-body");
+                const historyRow = document.createElement("tr");
+                historyRow.innerHTML = `
+                    <td>${currentPeriod}</td>
+                    <td>${result}</td>
+                `;
+                historyBody.prepend(historyRow); // Add the latest result to the top
+            }
+
+            // Start loading for the next period
+            document.getElementById("server-message").innerText = "LOADING SERVER...";
+            simulateServerLoading();
+        }
+
+        function simulateServerLoading() {
+            const loadingInterval = setInterval(() => {
+                updateLoadingProgress();
+                if (loadingProgress === 0) {
+                    clearInterval(loadingInterval);
+                }
+            }, 1000);
+        }
+
+        // Start the server loading simulation
+        simulateServerLoading();
+    </script>
+</body>
+</html>

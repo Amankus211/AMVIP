@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM VIP AI S3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: black;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #facc15;
+        }
+        .settings-icon {
+            cursor: pointer;
+        }
+        .box, .history-box, .streak-box {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #facc15;
+        }
+        .history-entry {
+            background: #334155;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        .streak-item {
+            display: inline-block;
+            width: 30%;
+            text-align: center;
+        }
+        .win { color: #10b981; }
+        .loss { color: #ef4444; }
+        .accuracy { color: #facc15; }
+        .pending { color: #fbbf24; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            📈 𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟 <span>S3</span> 
+            <span class="settings-icon" onclick="openSettings()">⚙️</span>
+        </div>
+
+        <div class="box">
+            <div class="title">🟡 Current Prediction</div>
+            <p>🕒 <strong>Countdown:</strong> <span id="countdown">60</span>s</p>
+            <p>🎮 <strong>Game Type:</strong> Wingo 1 Min</p>
+            <p>⏳ <strong>Period:</strong> <span id="currentPeriod">Loading...</span></p>
+            <p>⭐ <strong>Prediction:</strong> <span id="prediction">Loading...</span> <span class="pending">🟡 Pending</span></p>
+        </div>
+
+        <div class="history-box">
+            <div class="title">🔄 Prediction History</div>
+            <div id="history"></div>
+        </div>
+
+        <div class="streak-box">
+            <div class="title">📊 Streaks and Accuracy</div>
+            <div class="streak-item">
+                🟢 Win Streak <br>
+                <span id="winStreak" class="win">0</span>
+            </div>
+            <div class="streak-item">
+                🔴 Loss Streak <br>
+                <span id="lossStreak" class="loss">0</span>
+            </div>
+            <div class="streak-item">
+                🎯 Accuracy <br>
+                <span id="accuracy" class="accuracy">0.00%</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSettings() {
+            alert("Settings will be implemented soon!");
+        }
+
+        function generatePeriodNumber() {
+            let now = new Date();
+            let year = now.getUTCFullYear();
+            let month = String(now.getUTCMonth() + 1).padStart(2, '0');
+            let day = String(now.getUTCDate()).padStart(2, '0');
+            let hours = now.getUTCHours();
+            let minutes = now.getUTCMinutes();
+            let totalMinutes = hours * 60 + minutes;
+            return `${year}${month}${day}1000${10001 + totalMinutes}`;
+        }
+
+        let history = [];
+        let winStreak = 0;
+        let lossStreak = 0;
+        let totalPredictions = 0;
+        let correctPredictions = 0;
+
+        async function fetchGameResult() {
+            let result = Math.floor(Math.random() * 10); // Placeholder, will use real data later
+            let period = generatePeriodNumber();
+            return { period, result };
+        }
+
+        async function updatePrediction() {
+            let periodNumber = generatePeriodNumber();
+            let apiResult = await fetchGameResult();
+
+            if (apiResult) {
+                let predictionType = apiResult.result >= 5 ? "BIG" : "SMALL";
+                document.getElementById("currentPeriod").innerText = periodNumber;
+                document.getElementById("prediction").innerText = predictionType;
+
+                let isWin = predictionType === (apiResult.result >= 5 ? "BIG" : "SMALL");
+                history.unshift({
+                    period: apiResult.period,
+                    prediction: predictionType,
+                    status: isWin ? "✅ WIN" : "❌ LOSS"
+                });
+
+                if (isWin) {
+                    winStreak++;
+                    lossStreak = 0;
+                    correctPredictions++;
+                } else {
+                    lossStreak++;
+                    winStreak = 0;
+                }
+
+                totalPredictions++;
+                let accuracy = (correctPredictions / totalPredictions) * 100;
+
+                document.getElementById("winStreak").innerText = winStreak;
+                document.getElementById("lossStreak").innerText = lossStreak;
+                document.getElementById("accuracy").innerText = accuracy.toFixed(2) + "%";
+
+                let historyDiv = document.getElementById("history");
+                historyDiv.innerHTML = history.slice(0, 5).map(h => `
+                    <div class="history-entry">
+                        ⏳ <strong>Period:</strong> ${h.period} <br>
+                        ⭐ <strong>Prediction:</strong> ${h.prediction} <br>
+                        ${h.status}
+                    </div>
+                `).join("");
+            }
+        }
+
+        updatePrediction();
+        setInterval(updatePrediction, 60000);
+    // Countdown Timer
+        function startCountdown() {
+            let counter = 60;
+            setInterval(() => {
+                counter--;
+                document.getElementById("countdown").innerText = counter;
+                if (counter === 0) {
+                    counter = 60;
+                    updatePrediction();  // Refresh prediction every 60 seconds
+                }
+            }, 1000);
+        }
+
+        
+        startCountdown();
+    
+    </script>
+    
+
+</body>
+</html>

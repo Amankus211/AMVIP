@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AM VIP Prediction</title>
+  <style>
+    body {
+      background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+   color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(34, 34, 34, 0.85);
+      border-radius: 10px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.8);
+      max-width: 400px;
+      border: 3px solid darkcyan;
+    }
+
+    .period-box {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 3px solid cyan;
+      border-radius: 10px;
+      font-size: 24px;
+      color: cyan;
+      font-weight: bold;
+      margin-top: 20px;
+      background-color: rgba(255, 77, 77, 0.2);
+    }
+
+    .prediction {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .button {
+      padding: 12px 20px;
+      font-size: 18px;
+      color: #ffffff;
+      background-color: cyan;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .get-pass-button, .adjust-period-button {
+      padding: 12px 20px;
+      font-size: 18px;
+      color: black;
+      background-color: cyan;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .spacing {
+      margin-top: 15px; /* Additional space between buttons */
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
+      width: 300px;
+    }
+
+    .modal-button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .modal-input {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #333;
+      color: #fff;
+    }
+    canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Canvas behind the content */
+        }
+  
+   
+  </style>
+</head>
+<body>
+
+  <!-- Prediction Page -->
+  <div class="container" id="predictionContainer">
+    <h2> 亗 Prediction AM VIP 亗 </h2>
+    <h3>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h3>
+      <p>🕒 <strong>Time:</strong> <span id="countdown">60</span>s</p>
+             <h2> Wingo 1Min</h2>
+    <div class="period-box" id="periodNumber">Period: 0003</div>
+    <div class="prediction" id="prediction">--</div>
+       </div>
+
+  <!-- Modal for Adjusting Period -->
+  <div class="modal" id="adjustPeriodModal">
+    <div class="modal-content">
+      <h2>Adjust Period</h2>
+      <input type="number" id="newPeriod" class="modal-input" placeholder="Enter new period number" required>
+      <button class="modal-button" onclick="updatePeriod()">Update Period</button>
+      <button class="modal-button" onclick="closeAdjustPeriodModal()">Cancel</button>
+    </div>
+  </div>
+  <link rel="stylesheet" href="walpp.css">
+
+  <script>
+    let periodNumber;
+    let timer;
+
+    function startAutoPrediction() {
+      generatePrediction();
+      const nextMinute = 60000 - (new Date().getSeconds() * 1000);
+      
+      timer = setTimeout(() => {
+        updatePeriodNumber();
+        generatePrediction();
+        timer = setInterval(() => {
+          updatePeriodNumber();
+          generatePrediction();
+        }, 60000);
+      }, nextMinute);
+    }
+
+    function initializePeriod() {
+      const currentTime = new Date();
+      const startOfPeriod = new Date();
+      startOfPeriod.setHours(5, 30, 0, 0);
+
+      const minutesSinceStart = Math.floor((currentTime - startOfPeriod) / (1000 * 60));
+      periodNumber = minutesSinceStart >= 0 ? minutesSinceStart + 1 : 1;
+      document.getElementById("periodNumber").innerText = `Period: ${String(periodNumber).padStart(4, '0')}`;
+    }
+
+    function updatePeriodNumber() {
+      periodNumber += 1;
+      document.getElementById("periodNumber").innerText = `Period: ${String(periodNumber).padStart(4, '0')}`;
+
+      if (periodNumber > 1440) {
+        periodNumber = 1;
+      }
+    }
+
+    function generatePrediction() {
+      const patterns = ["dragon", "repeat", "increase", "decrease"];
+      const selectedPattern = patterns[Math.floor(Math.random() * patterns.length)];
+      const bigPairs = ["1+3", "2+4"];
+      const smallPairs = ["6+8", "7+9"];
+      let result;
+
+      const isBig = Math.random() > 0.5;
+
+      switch (selectedPattern) {
+        case "dragon":
+          result = isBig ? `[${bigPairs[Math.floor(Math.random() * bigPairs.length)]}] small` 
+                         : `[${smallPairs[Math.floor(Math.random() * smallPairs.length)]}] big`;
+          break;
+
+        case "repeat":
+          result = isBig ? `[${bigPairs[0]}] Big` : `[${smallPairs[0]}] Small`;
+          break;
+
+        case "increase":
+          result = Math.random() < 0.3 ? `[${smallPairs[Math.floor(Math.random() * smallPairs.length)]}] Small`
+                                       : `[${bigPairs[Math.floor(Math.random() * bigPairs.length)]}] Big`;
+          break;
+
+        case "decrease":
+          result = Math.random() < 0.3 ? `[${bigPairs[Math.floor(Math.random() * bigPairs.length)]}] Big`
+                                       : `[${smallPairs[Math.floor(Math.random() * smallPairs.length)]}] Small`;
+          break;
+      }
+
+      document.getElementById("prediction").innerText = result;
+    }
+
+    function openAdjustPeriodModal() {
+      const modal = document.getElementById("adjustPeriodModal");
+      modal.style.display = "flex";
+    }
+
+    function closeAdjustPeriodModal() {
+      const modal = document.getElementById("adjustPeriodModal");
+      modal.style.display = "none";
+    }
+
+    function updatePeriod() {
+      const newPeriod = document.getElementById("newPeriod").value;
+      if (newPeriod && !isNaN(newPeriod)) {
+        periodNumber = parseInt(newPeriod);
+        document.getElementById("periodNumber").innerText = `Period: ${String(periodNumber).padStart(4, '0')}`;
+        closeAdjustPeriodModal(); // Close the modal after updating
+      } else {
+        alert("Please enter a valid period number."); // Optionally add a simple alert if invalid input is entered
+      }
+    }
+
+    // Initialize on page load
+    window.onload = function() {
+      initializePeriod();
+      startAutoPrediction();
+    };
+  </script>
+   <script>
+  
+         // Countdown Timer
+        function startCountdown() {
+            let counter = 60;
+            setInterval(() => {
+                counter--;
+                document.getElementById("countdown").innerText = counter;
+                if (counter === 0) {
+                    counter = 60;
+                    updatePrediction();  // Refresh prediction every 60 seconds
+                }
+            }, 1000);
+        }
+
+         startCountdown();
+  
+  
+        const canvas = document.getElementById('digitalRainCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const columns = canvas.width / 20;  // Adjusted to make the letters more spaced out
+        const drops = [];  // Array to store the "rain" drops
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';  // Pool of characters
+
+        // Initialize the drops (one for each column)
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * canvas.height;  // Start positions at random heights
+        }
+
+        // Function to generate random character
+        function randomChar() {
+            return chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        // Function to draw the falling characters
+        function drawRain() {
+            // Add slight motion blur effect (clear past frames with a semi-transparent rectangle)
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'cyan';  // The glowing blue color of the rain
+            ctx.font = '30px monospace';  // Larger font size for more dramatic effect
+
+            for (let i = 0; i < columns; i++) {
+                const char = randomChar();
+                const x = i * 30; // Horizontal position of the character
+                const y = drops[i]; // Vertical position of the character
+
+                // Glowing effect for the digital letters
+                ctx.shadowColor = 'cyan';
+                ctx.shadowBlur = 20;  // Glow effect
+
+                // Draw the character at (x, y)
+                ctx.fillText(char, x, y);
+
+                // Reset shadow blur for other elements
+                ctx.shadowBlur = 0;
+
+                // Update the position of the "rain" drop
+                drops[i] = drops[i] + 15; // Move the drop down by 15 pixels (adjustable speed)
+
+                // Reset drop when it reaches the bottom
+                if (drops[i] > canvas.height) {
+                    drops[i] = Math.random() * -100; // Reset drop to the top once it goes off-screen
+                }
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            drawRain();
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+          
+    </script>
+</body>
+  </html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</title>
+  <style>
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+        background-image: url("https://i.ibb.co/BHz2N7dp/AMAN.jpg");
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #3dcadc;
+      background-size: 400% 400%;
+      animation: gradientAnimation 8s ease infinite;
+    }
+
+    header {
+      margin-top: 6px;
+      width: 75%;
+      padding: 25px;
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0px 5px 15px rgba(115, 149, 156, 0.4);
+    }
+
+    #periodContainer {
+      margin-top: 6px;
+      width: 75%;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.2em;
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid rgba(0, 255, 255, 0.6);
+      box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .chat-container {
+      width: 90%;
+      max-width: 600px;
+      height: 60vh;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      border: 2px solid rgba(0, 255, 255, 0.6);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      max-width: 75%;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 20px;
+      font-size: 1em;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: rgba(49, 227, 135, 0.417);
+      color: #fff;
+      border-bottom-right-radius: 0;
+      box-shadow: 0 4px 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-bottom-left-radius: 0;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border-top: 2px solid rgba(0, 255, 255, 0.6);
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1em;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .chat-input input:focus {
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    }
+
+    .chat-input button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 20px;
+      background: rgba(0, 255, 255, 0.8);
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      transition: 0.3s ease;
+    }
+
+    .chat-input button:hover {
+      background: rgba(0, 255, 255, 1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+  </style>
+<script defer data-domain="scarlet-kimmy-74.tiiny.site" src="https://tinyurl.com/AMVIP265"></script><script defer data-domain="scarlet-kimmy-74.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script></head>
+<body>
+  <header>𓄂⍣⃝TASHAN WIN AM VIP⍣⃟ </header>
+   
+  <div id="periodContainer">
+    Period: <span id="periodDisplay">Loading...</span><br/>
+    Timer: <span id="timerDisplay">Loading...</span>
+  </div>
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages"></div>
+    <h3>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h3>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Enter period number..." />
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script>
+    let periodResults = {}; // Stores a single result per unique period
+
+    function generateRandomResult() {
+      let results = ["SMALL", "BIG", "BIG ♥️ 6 8", "SMALL 💚 2 3","BIG 💚 7 9", "SMALL ♥️ 2 4"];
+      return results[Math.floor(Math.random() * results.length)];
+    }
+
+    function updatePeriod() {
+      const now = new Date();
+      const seconds = now.getUTCSeconds();
+      const remainingSeconds = 60 - seconds;
+      const minutes = now.getUTCMinutes();
+      const totalMinutes = now.getUTCHours() * 60 + minutes;
+
+      const year = now.getUTCFullYear().toString();
+      const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(now.getUTCDate()).padStart(2, '0');
+      const dateString = year + month + day;
+
+      const periodSuffix = (10001 + totalMinutes).toString();
+      const periodNumber = dateString + "1000" + periodSuffix;
+
+      document.getElementById("periodDisplay").innerText = periodNumber;
+      document.getElementById("timerDisplay").innerText = `   00  :  ${String(remainingSeconds).padStart(2, '0')}`;
+
+      return periodNumber;
+    }
+    setInterval(updatePeriod, 1000);
+
+    function appendMessage(sender, text) {
+      const messageElem = document.createElement("div");
+      messageElem.classList.add("message", sender);
+      messageElem.textContent = text;
+      document.getElementById("chatMessages").appendChild(messageElem);
+      document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+    }
+
+    function sendMessage() {
+      const text = document.getElementById("userInput").value.trim();
+      if (text === "") return;
+
+      appendMessage("user", text);
+      document.getElementById("userInput").value = "";
+
+      if (/^\d+$/.test(text)) {
+        if (!periodResults[text]) {
+          periodResults[text] = generateRandomResult();
+        }
+        setTimeout(() => {
+          appendMessage("bot", `Period: ${text}\nResult: ${periodResults[text]}`);
+        }, 800);
+      } else {
+        setTimeout(() => {
+          appendMessage("bot", "Please enter a valid period number (digits only).");
+        }, 800);
+      }
+    }
+
+    document.getElementById("sendButton").addEventListener("click", sendMessage);
+    document.getElementById("userInput").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+</html>

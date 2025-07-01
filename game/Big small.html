@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𓄂⍣⃝🦋Prediction AM VIP⍣⃟❤️‍🩹𝄟</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* General Body Styling */
+        body {
+            background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;
+           
+            text-align: center;
+      
+            font-family: 'Roboto', sans-serif;
+          
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header Styling */
+        .header {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #4da6ff; /* Bright Blue */
+            text-shadow: 0 0 15px #4da6ff, 0 0 30px #809fff;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 15px #4da6ff, 0 0 30px #4da6ff, 0 0 45px #4da6ff;
+            }
+            100% {
+                text-shadow: 0 0 10px #004080, 0 0 20px #004080, 0 0 30px #004080;
+            }
+        }
+
+        /* Result Container */
+        .result-container {
+            width: 80%;
+            max-width: 900px;
+            background: linear-gradient(145deg, #1c1c3a, #262673);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(77, 166, 255, 0.7), 0 0 60px rgba(128, 128, 255, 0.5);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Period & Timer */
+        .period-timer {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            color: #ffa31a;
+        }
+
+        .period-timer div {
+            text-shadow: 0 0 10px #ffa31a;
+        }
+
+        /* Result Box */
+        .result-box {
+            background: #1a1a3d;
+            border: 2px solid #4da6ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.5);
+        }
+
+        .result-box h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #ffa31a;
+            text-shadow: 0 0 15px #ffa31a;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 20px #4da6ff;
+        }
+
+        .result.big {
+            color: #ff6666;
+            text-shadow: 0 0 20px #ff3333;
+        }
+
+        .result.small {
+            color: #66ff66;
+            text-shadow: 0 0 20px #33cc33;
+        }
+
+        /* Action Buttons */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background: linear-gradient(45deg, #4da6ff, #1c1c3a);
+            border: 2px solid #4da6ff;
+            border-radius: 5px;
+            text-shadow: 0 0 10px #4da6ff;
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.7);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #809fff;
+        }
+
+        .button:active {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #4da6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</div>
+    <div class="result-container">
+        <div class="period-timer">
+            <div>Period: <span id="period1m">Loading...</span></div>
+            <div>Timer: <span id="timer1m">00:00</span></div>
+        </div>
+        <div class="result-box">
+            <h2>Current Result</h2>
+            <div id="resultDisplay" class="result">Loading...</div>
+        </div>
+        <div class="button-container">
+            <a href="https://t.me/Amank49" target="_blank" class="button">Join AM VIP</a>
+            <a href="https://82lottery4.com/#/register?invitationCode=481442803973" target="_blank" class="button">REGISTER</a>
+        </div>
+    </div>
+
+    <script>
+        const resultsPattern = [
+            "hello", "how", "SMALL", "SMALL", "BIG",
+            "SMALL" ];
+
+        let currentPeriodIndex = 0;
+
+        function updatePeriodAndTimer() {
+            const now = new Date();
+            const seconds = now.getUTCSeconds();
+            const remainingSeconds = 60 - seconds;
+            const minutes = now.getUTCMinutes();
+            const totalMinutes = now.getUTCHours() * 60 + minutes;
+
+            // Update period number
+            const periodElement = document.getElementById("period1m");
+            const periodNumber = `${now.getUTCFullYear()}${(now.getUTCMonth() + 1)
+                .toString()
+                .padStart(2, "0")}${now.getUTCDate().toString().padStart(2, "0")}1000${(
+                10001 + totalMinutes
+            ).toString()}`;
+            periodElement.textContent = periodNumber;
+
+            // Update timer
+            const timerElement = document.getElementById("timer1m");
+            timerElement.textContent = `00:${remainingSeconds
+                .toString()
+                .padStart(2, "0")}`;
+
+            // Show result when period changes
+            if (remainingSeconds === 60) {
+                displayResult(periodNumber);
+            }
+        }
+
+        function displayResult(periodNumber) {
+            const resultDisplay = document.getElementById("resultDisplay");
+
+            // Update current result
+            const currentResult = resultsPattern[currentPeriodIndex];
+            resultDisplay.textContent = currentResult;
+
+            // Add class for styling
+            resultDisplay.className = `result ${currentResult.toLowerCase()}`;
+
+            currentPeriodIndex = (currentPeriodIndex + 1) % resultsPattern.length;
+        }
+
+        // Initialize the timer update
+        setInterval(updatePeriodAndTimer, 1000);
+    </script>
+</body>
+</html>

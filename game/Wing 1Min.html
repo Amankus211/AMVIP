@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction</title>
+  <style>
+    body {
+      background: url('https://i.ibb.co/BHz2N7dp/AMAN.jpg') no-repeat center center fixed;
+            background-size: cover;   display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+        color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(34, 34, 34, 0.85);
+      border-radius: 10px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.8);
+      max-width: 400px;
+      border: 3px solid darkcyan;
+    }
+
+    .period-box {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 3px solid cyan;
+      border-radius: 10px;
+      font-size: 24px;
+      color: cyan;
+      font-weight: bold;
+      margin-top: 20px;
+      background-color: rgba(255, 77, 77, 0.2);
+    }
+
+    .prediction {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .button {
+      padding: 12px 20px;
+      font-size: 18px;
+      color: #ffffff;
+      background-color: cyan;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .get-pass-button, .adjust-period-button {
+      padding: 12px 20px;
+      font-size: 18px;
+      color: black;
+      background-color: cyan;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .spacing {
+      margin-top: 15px; /* Additional space between buttons */
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
+      width: 300px;
+    }
+
+    .modal-button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .modal-input {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #333;
+      color: #fff;
+    }
+    canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Canvas behind the content */
+        }
+        
+     h4 {
+            text-align: center;
+            
+        }
+        #results {
+            border: 4px solid #ff69b4;
+            padding: 10px;
+            margin: 0px auto;
+            width: 35%;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        #timer {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff; /* Darker pink */
+        }
+        .result {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .big {
+            color: #28a745; /* Green */
+        }
+        .small {
+            color: #dc3545; /* Red */
+        }
+  </style>
+</head>
+<body>
+<!-- Prediction Page -->
+  <div class="container">
+    <div class="hacking-bg" id="hackingBg"></div>
+   <h2> 亗 Prediction AM VIP 亗 </h2>
+   <h3>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h3>
+   <h2> Wingo 1Min</h2>
+  <div class="period-box" id="periodNumber">Period: 0003</div>
+    <div id="timer">Timer: <span id="timer1m"></span></div>
+<div id="results">
+    <div id="currentResult" class="result"></div>
+</div>
+
+
+  <link rel="stylesheet" href="walpp.css">
+
+<script src="win 12.js"></script>
+ 
+</body>
+  </html>
