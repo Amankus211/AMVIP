@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>⍣AM VIP⍣⃟</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/sJH0S5Cg/AM-VIP41.jpg">
+      <link rel="stylesheet" href="sty21.css" />  
+  </head>
+  <body>
+
+    <div class="box">
+    <div class="border-line"></div>
+    <form action="">
+        <div class="logo">   
+   <img src="https://i.ibb.co/pBrpC9dd/AM-VIP41.jpg" alt="Profile Picture">
+   <h2>WINGO SERVER HACKED</h2>
+    <div class="container">
+  
+   
+        
+            </a>
+               <ul>
+                
+        <li style="--clr: #1877f2">
+            
+          <a data-url="#">
+            <i class="fa-brands fa-facebook-f">WinGo 30sec</i>
+          </a>
+        </li>
+        <li style="--clr: #ff0000">
+          <a data-url="#">
+            <i class="fa-brands fa-youtube">WinGo 1Min</i>
+          </a>
+</li>
+        <li style="--clr: #b70b92">
+          <a data-url="#">
+            <i class="fa-brands fa-twitter">WinGo 3Min</i>
+          </a>
+        </li>
+         </ul>
+    </div>
+     </div> 
+        <h1>ENTER PERIOD NUMBER:</h1>
+        <div class="input-group">
+ <span>Period:</span>
+        <input type="text" id="period-input" placeholder="Enter Period No." oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+ </div>        
+
+
+    <div>Result: <span id="result">--</span></div>
+
+<button class="start-btn" onclick="playSound(); startProcess()">Start</button>
+    <div id="loading" class="loading">Loading...</div>
+<script>
+
+    window.onload = function() {
+
+        showTab('hack');
+
+    };
+
+    function showTab(tab) {
+
+        document.getElementById('hack-content').style.display = tab === 'hack' ? 'block' : 'none';
+
+        document.getElementById('game-content').style.display = tab === 'game' ? 'block' : 'none';
+
+
+
+        document.getElementById('hack-tab').classList.toggle('active', tab === 'hack');
+
+        document.getElementById('game-tab').classList.toggle('active', tab === 'game');
+
+    }
+
+
+
+let storedResults = {}; // To store results for each period
+
+// Show the dialog on page load
+
+    document.getElementById('dialog-overlay').style.display = 'flex';
+
+
+
+    // Close the dialog
+
+    function closeDialog(event) {
+
+        document.getElementById('dialog-overlay').style.display = 'none';
+
+    }
+
+    // Show the dialog on page load
+
+    // document.getElementById('dialog-overlay').style.display = 'flex';  // This line is removed
+
+
+
+    // Close the dialog
+
+    function closeDialog(event) {
+
+        document.getElementById('dialog-overlay').style.display = 'none';
+
+    }
+
+
+
+    // Random User Count and Period Result Simulation
+
+    setInterval(() => {
+
+    document.getElementById('online-users').textContent = Math.floor(Math.random() * 5000) + 45000;
+
+}, 1000);
+
+
+
+
+
+    function startProcess() {
+
+        let periodInput = document.getElementById('period-input').value.trim();
+
+        let resultElement = document.getElementById('result');
+
+
+
+        if (!periodInput) {
+
+            resultElement.textContent = "Error ❌";
+
+            resultElement.style.color = "#d32f2f"; // Error color
+
+            return;
+
+        }
+
+
+
+        document.getElementById('loading').style.display = 'block';
+
+        setTimeout(() => {
+
+            // Check if a result is already stored for this period
+
+            if (!storedResults[periodInput]) {
+
+                // Generate a random number between 0 and 9
+
+                let number = Math.floor(Math.random() * 10);
+
+
+
+                // Determine size and color based on the generated number
+
+                let size = (number >= 0 && number <= 4) ? "SMALL" : "BIG";
+
+                let color = (number % 2 === 0) ? "🔴" : "🟢";
+
+
+
+                // Store the result for this period
+
+                storedResults[periodInput] = `${size} / ${color}`;
+
+            }
+
+
+
+            // Display the stored result
+
+            resultElement.textContent = `${storedResults[periodInput]}`;
+
+            resultElement.style.color = "#00796b"; // Success color
+
+            document.getElementById('loading').style.display = 'none';
+
+        }, 750);
+
+    }
+
+    function showAccuracyDialog() {
+
+        document.getElementById('accuracy-dialog').style.display = 'flex';
+
+    }
+
+
+
+    function hideAccuracyDialog() {
+
+        document.getElementById('accuracy-dialog').style.display = 'none';
+
+    }
+
+
+
+    // Play the sound when the button is clicked
+
+    function playSound() {
+
+        document.getElementById('click-sound').play();
+
+    }
+
+</script>
+
+</body>
+
+</html>

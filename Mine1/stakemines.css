@@ -1,0 +1,162 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top right, #1c1c1c, #0e0e0e);
+    color: #44c116;
+    display: flex;
+    
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 5vw;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 15vw);
+    grid-template-rows: repeat(5, 15vw);
+    gap: 1.5vw;
+}
+
+.grid-item {
+    background-color: #5b5c47c5;
+    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(12, 158, 112, 0.905);
+    transition: background-color 0.3s ease;
+   
+      /* horizontal-offset vertical-offset blur spread color */
+      /* Adjust border radius as needed */
+     
+      
+}
+h4{
+    color: #00E700;
+    text-align: center;
+}
+#note{
+    width:90%;
+    height:22vh;
+    border-radius:10px;
+   display: flex;
+  
+    align-items: start;
+    flex-direction: column;
+    background-color:  #1a2227;
+} 
+#note h4{
+    color:rgb(198, 184, 184);
+    text-align: left;
+    line-height: 0px;
+   margin-left: 10px;
+}
+button{
+    background-color: #00E700;
+    color: black;
+    width: 70vw;
+    height: 5vh;
+    font-size: 4vw;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Responsive design */
+
+/* Style for diamonds */
+.diamond {
+    background-image: url(https://i.ibb.co/gL5kLdZM/gem.jpg);
+    background-color: #1a2227;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Styling start for card */
+.card {
+    height: 45vw;
+    width: 95%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: rgb(74, 71, 71);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+  }
+  
+  .cardimg {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    width: 40%;
+    height: 90%;
+    background-color: rgb(98, 89, 89);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .cardimg img {
+    max-width: 80%;
+    max-height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+  }
+  
+  .cardinfo {
+   padding-right:2vw;
+    width: 60%;
+    height: 100%;
+    background-color: rgb(98, 89, 89);
+     display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+ 
+  
+  }
+  
+  .cardinfo h5 {
+    text-align: left;
+  }
+  
+  .card button {
+    width: 100%;
+  }
+  
+  /* Styling START for BUTTON */
+  /* Styling START for Popup Overlay */
+.popup-overlay {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 30vh;
+    max-width: 700px;
+    text-align: center;
+  }
+  
+  .popup-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(137, 127, 127);
+    padding: 40px;
+    border-radius: 5px;
+    font-size: 3.8vw;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  
+  #closePopup {
+    margin-top: 10px;
+  }
+  
+  /* Styling for END FOR POPUP */

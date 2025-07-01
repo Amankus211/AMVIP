@@ -1,0 +1,202 @@
+@keyframes rgbBorder {
+    0% { border-color: #060504; }
+    25% { border-color: #1d1dff; }
+    50% { border-color: #230e7a; }
+    75% { border-color: royalblue; }
+    100% { border-color: #641cad; }
+}
+
+        body {
+            background: linear-gradient(135deg, #242424 0%, royalblue 100%);
+            background-size: cover;
+            font-family: 'Noto Sans', sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px; /* Adjust height to auto to accommodate dynamic content */
+            background-color: rgba(34, 34, 34, 0.8);
+            border: 8px solid rgb(255, 0, 200);
+            padding: 10px;
+            padding-bottom: 80px; /* Increased padding to ensure space for loading text */
+            border-radius: 80px;
+            box-shadow: 75px;
+            transition: border-color 1.3s, box-shadow 1.3s;
+            animation: rgbBorder 7s linear infinite;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title, .timer, .period, .bet {
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: royalblue;
+        }
+
+        .timer {
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .period {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: royalblue;
+        }
+
+        .bet {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 10px; /* Reduced margin to fit below the bet text */
+            color: #fff;
+        }
+
+        .loading {
+            font-size: 1.0rem;
+            margin-top: 0px; /* Adjust to ensure it's directly below the bet text */
+            color: #fff;
+        }
+
+        .button {
+            display: block;
+            padding: 0;
+            margin: 20px auto;
+            width: 150px;
+            height: 50px;
+            background-color: rgb(51, 88, 198);
+            border: none;
+            color: #d8cece;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            line-height: 50px;
+        }
+
+        .telegram-button {
+            display: block;
+            margin: 0px;
+            width: 150px;
+            height: 50px;
+            background-color: #2451e5;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            display: none;
+        }
+
+        .popup {
+            background-color: black;
+            padding: 20px;
+            color: #fe3e39;
+            border-radius: 10px;
+            border: 3px solid white;
+            text-align: center;
+            width: 300px;
+            height: 320px;
+        }
+
+        .popup .cancel-button {
+            display: none;
+            background-color: yellowgreen;
+            color: white;
+      
+      }
+      .hacking-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 10%;
+        opacity: 0.1;
+        z-index: -1;
+      }
+      h1 {
+        font-size: 3rem;
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; }
+        50% { text-shadow: 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00; }
+        100% { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; }
+      }
+      input, button {
+        background-color: #000;
+        border: 1px solid #0f0;
+        color: #0f0;
+        padding: 10px;
+        margin: 10px 0;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+      }
+      button {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background-color: #0f0;
+        color: #000;
+      }
+      #result {
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+      .hidden {
+        display: none;
+      }
+      a {
+        color: #0f0;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+

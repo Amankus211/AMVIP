@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(images/back.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.profile-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 25px;
+  padding: 30px;
+  border: 1px solid #ffffff40;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+.image .profile-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+.data h2{
+  font-size: 33px;
+  font-weight: 600;
+}
+span{
+  font-size: 18px;
+}
+.row{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.row .info{
+  text-align: center;
+  padding: 0 20px;
+}
+.buttons{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.buttons .btn{
+  color: #fff;
+  text-decoration: none;
+  margin: 10px;
+  padding: 8px 25px;
+  border-radius: 15px;
+  font-size: 10.5px;
+  white-space: nowrap;
+  background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
+}
+.buttons .btn:hover{
+  box-shadow: inset 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.select-menu {
+  width: 300px;
+  margin: 0px auto;
+}
+.select-menu .select-btn {
+  display: flex;
+  height: 10px;
+  background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
+  padding: 20px;
+  font-size: 10px;
+  font-weight: 400;
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.select-btn i {
+  font-size: 2px;
+  transition: 0.3s;
+}
+.select-menu.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.select-menu .options {
+  position: relative;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 8px;
+  background: #b606de00;
+  box-shadow: 0 0 3px rgba(6, 171, 226, 0.828);
+  display: none;
+}
+.select-menu.active .options {
+  display: block;
+}
+.options .option {
+  display: flex;
+  height: 3px;
+  cursor: pointer;
+  padding: 15px;
+  margin-top: 2px;
+  border-radius: 8px;
+  align-items: center;
+  background: #0c9cb2;
+}
+.options .option:hover {
+  background: #128bb7;
+}
+.option i {
+  font-size: 25px;
+  margin-right: 12px;
+}
+.option .option-text {
+  font-size: 18px;
+  color: #ffffff;
+}
