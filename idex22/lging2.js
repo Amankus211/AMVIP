@@ -50,7 +50,7 @@ body.addEventListener('touchend', onTouchEnd)
       location.reload(); // Reloads the page to bring back the login screen
     }
    
-        const validIds = ['Afdan231', 'VIP1122', 'AN4961', '9516bx6', '1634jd3', '363702', '1912869', 'Aryan44', 'vip1122', 'Get125', 'Ag85rs1', 'Manish11']; // Predefined IDs
+        const validIds = ['Afdan231', 'VIP1122', 'AN4961', '9516bx6', '1634jd3', '363702', '1912869', 'Aryan44', 'vip1122', 'Get125', 'Ag85rs1', 'Ma1241']; // Predefined IDs
         const form = document.getElementById('accessForm');
         const resultDiv = document.getElementById('result');
 
