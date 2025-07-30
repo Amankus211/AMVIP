@@ -1,188 +1,633 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/@codingnepal -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="icon" type="image/png" href="https://i.ibb.co/sJH0S5Cg/AM-VIP41.jpg">
-    <title>⍣AM VIP⍣⃟</title>
-    <link rel="stylesheet" href="idex22/style14.css" />
-    <link rel="stylesheet" href="idex22/style.css" />
-    <!-- Linking Google Fonts for Icons -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM VIP Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --dark-color: #1a1a2e;
+            --light-color: #f1f1f1;
+            --success-color: #4BB543;
+            --error-color: #ff3333;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            
+            padding: 20px;
+            background: linear-gradient(135deg, var(--dark-color), #16213e);
+            color: var(--light-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+
+        .box2 {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .border-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--light-color);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .light-mode .input-box input {
+            background: rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+
+        .input-box input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
+        }
+
+        .light-mode .input-box input:focus {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .input-box span {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .light-mode .input-box span {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .input-box input:valid ~ span,
+        .input-box input:focus ~ span {
+            transform: translateY(-25px);
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .imp-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .imp-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .light-mode .imp-links a {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .imp-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        #deviceIdBtn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+
+        .status-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .success {
+            background-color: rgba(75, 181, 67, 0.2);
+            color: var(--success-color);
+            display: block;
+        }
+
+        .error {
+            background-color: rgba(255, 51, 51, 0.2);
+            color: var(--error-color);
+            display: block;
+        }
+
+        /* Theme Toggle */
+        #themeToggleBtn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .light-mode #themeToggleBtn {
+            color: #333;
+        }
+
+        /* Chat Widget */
+        .chat-to2 {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 99;
+            border: none;
+        }
+
+        .chat-box {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .light-mode .chat-box {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .chat-box.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header strong {
+            font-weight: 600;
+        }
+
+        #closeChat {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-body {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        #sendMsg {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        .light-mode .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top-color: var(--secondary-color);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Device ID Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--dark-color);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .light-mode .modal-content {
+            background: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #deviceIdDisplay {
+            margin: 15px 0;
+            font-size: 1.2rem;
+            word-break: break-all;
+        }
+
+        #copyDeviceId {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-  <body>
+<body>
+    <button id="themeToggleBtn" aria-label="Toggle dark/light mode">🌓</button>
     
-    <!-- Mobile Sidebar Menu Button -->
-    <button class="sidebar-menu-button">
-      <span class="material-symbols-rounded">menu</span>
-    </button>
-
-    <aside class="sidebar">
-      <!-- Sidebar Header -->
-      <header class="sidebar-header">
-        <a href="#" class="header-logo">
-          <img src="34-Pricing Table/photo__x.jpg" alt="CodingNepal" />
-        </a>
-         <!-- Sidebar Footer -->
-        <div class="sidebar-footer">
-          <button class="theme-toggle">
-          
-              <span class="theme-icon material-symbols-rounded">dark_mode</span>
-              <span class="theme-text"></span>
-            </div>
-            <div class="theme-toggle-track">
-              <div class="theme-toggle-indicator"></div>
-            </div>
-      
-        <button class="sidebar-toggler">
-          <span class="material-symbols-rounded">chevron_left</span>
-        </button>
-      </header>
-      <div class="sidebar-content">
-
-          <!-- Search Form -->
-          <form2 action="#" class="search-form">
-            <span class="material-symbols-rounded">search</span>
-            <input type="search" placeholder="Search..." required />
-
-
-      </div>
-      
-      <nav class="sidebar-nav">
-        
-        <!-- Primary Top Nav -->
-        <ul class="nav-list primary-nav">
-          <li class="nav-item">
-            <a href="Profit ard.html" class="nav-link">
-              <span class="material-symbols-rounded">dashboard</span>
-              <span class="nav-label">Dashboard</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Dashboard</a></li>
-            </ul>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown-container">
-            <a href="#" class="nav-link dropdown-toggle">
-              <span class="material-symbols-rounded">calendar_today</span>
-              <span class="nav-label">GameStats</span>
-              <span class="dropdown-icon material-symbols-rounded">keyboard_arrow_down</span>
-            </a>
-            <!-- Dropdown Menu -->
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Google</a></li>
-            <li class="nav-item"><a href="http://www.tashanwin.net/#/register?invitationCode=77638165966" class="nav-link dropdown-link">TASHAN WIN</a></li>
-              <li class="nav-item"><a href="#" class="nav-link dropdown-link">Mobile Apps</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="material-symbols-rounded">notifications</span>
-              <span class="nav-label">Notifications</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Notifications</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="App 2/pay AM.html" class="nav-link">
-              <span class="material-symbols-rounded">local_library</span>
-              <span class="nav-label">App apk</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Resources</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="Gift 🎁/Gift.html" class="nav-link">
-              <span class="material-symbols-rounded">extension</span>
-              <span class="nav-label">🎁👇Gift code👇🎁</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">🎁👇Gift code👇🎁</a></li>
-            </ul>
-          </li>
-          
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="material-symbols-rounded">settings</span>
-              <span class="nav-label">Settings</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Settings</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- Secondary Bottom Nav -->
-        <ul class="nav-list secondary-nav">
-          <li class="nav-item">
-            <a href="https://t.me/Am_vip_1/?text=*HELLO-SIR" class="nav-link">
-              <span class="material-symbols-rounded">help</span>
-              <span class="nav-label">Support</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Support</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="index.html" class="nav-link">
-              <span class="material-symbols-rounded">logout</span>
-              <span class="nav-label">Sign Out</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      </aside>
-       </div>
-  <div class="box">
-        <div class="border-line">
-      <div class="login">
-    <form id="accessForm">
-             <!-- Login Page -->
-     
-  <div class="login-container" id="loginContainer">
-    <div class="profile-card">
-    <div class="image">
-      <img src="AM VIP.png" alt="" class="profile-pic">
-    </div>
-            <h2>𓄂⍣⃝PRIDIDICITON ≛ 卂๓ ⍣ vip⍣⃟</h2>
+    <div class="box2">
+        <div class="border-line"></div>
+        <form id="loginForm">
+            <div class="profile-container">  
+                <img src="https://i.ibb.co/pBrpC9dd/AM-VIP41.jpg" alt="Profile Picture" class="profile-img">  
+            </div>  
+            <h2>𓄂⍣AM VIP⍣</h2>
+            
+            <!-- Username Login -->
             <div class="input-box">
-                <input type="password" id="userId" class="input-field" placeholder="" required>
-                <span>User Id</span>
-                 <i class="fa-regular fa-user"></i>
+                <input type="password" id="user-key" required/>
+                <span>Enter Access Key</span>
+                <i></i>
             </div>
-             <div id="result"></div>
+            
             <div class="imp-links">
-                <a href="premium.html">Forget Password</a>
-                <a href="apk buy.html">Get key</a>
-            </div>      
-            <input type="submit" value="Login" class="btn">
+                <a href="#">Forgot Password</a>   
+                <a href="#">Gift Code</a>
+            </div>            
+            
+            <button type="button" class="btn" onclick="verifyKey()">Login</button>
+            
+            <!-- Loading Animation -->
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Verifying...</p>
             </div>
-        <div class="imp-box">         
-        </div>
-        
-        
-   <h2>OR</h2>
-    <div class="center">
-    <div class="fingerprint">
-        <div class="fingerprintBox">
-        <img src="idex22/fingerprint2.png">
-        </div>
-         <p>Login with fingerprint</p>
-  </form>
- </div> 
-
-
-        
-    <script src="idex22/lgin1.js"></script>
-    <script src="idex22/lging2.js"></script>
+            
+            <!-- Status Messages -->
+            <div id="message" class="status-message" aria-live="polite"></div>
+            
+            <!-- Secondary Actions -->
+            <div class="action-buttons">  
+                <button type="button" id="deviceIdBtn">Device ID</button>       
+            </div>     
+        </form>                                    
+    </div>
     
-  </body>
+    <!-- Chat Toggle Button -->
+    <button class="chat-to2" id="chatToggle" aria-label="Open chat">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-box">
+        <div class="chat-header">
+            <strong>AM Support</strong>
+            <span id="closeChat" title="Close">✖</span>
+        </div>
+        <div class="chat-body" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type a message..." />
+            <button id="sendMsg">➤</button>
+        </div>
+    </div>
+    
+    <!-- Device ID Modal -->
+    <div id="deviceIdModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Your Device ID</h3>
+            <div id="deviceIdDisplay"></div>
+            <button id="copyDeviceId">Copy to Clipboard</button>
+        </div>
+    </div>
+    
+    <script>
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        // Set initial theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Generate and store a random Device ID (0-20)
+        window.onload = function() {
+            let randomNumber = localStorage.getItem('randomNumber');
+            if (!randomNumber) {
+                randomNumber = Math.floor(Math.random() * 21); // 0-20
+                localStorage.setItem('randomNumber', randomNumber);
+            }
+        };
+
+        // Device ID Modal
+        const deviceIdBtn = document.getElementById('deviceIdBtn');
+        const deviceIdModal = document.getElementById('deviceIdModal');
+        const deviceIdDisplay = document.getElementById('deviceIdDisplay');
+        const copyDeviceIdBtn = document.getElementById('copyDeviceId');
+        const closeModal = document.querySelector('.close-modal');
+
+        deviceIdBtn.addEventListener('click', () => {
+            const randomNumber = localStorage.getItem('randomNumber');
+            deviceIdDisplay.textContent = randomNumber;
+            deviceIdModal.style.display = 'flex';
+        });
+
+        copyDeviceIdBtn.addEventListener('click', () => {
+            const randomNumber = localStorage.getItem('randomNumber');
+            navigator.clipboard.writeText(randomNumber)
+                .then(() => {
+                    copyDeviceIdBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyDeviceIdBtn.textContent = 'Copy to Clipboard';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy:', err);
+                    copyDeviceIdBtn.textContent = 'Error';
+                    setTimeout(() => {
+                        copyDeviceIdBtn.textContent = 'Copy to Clipboard';
+                    }, 2000);
+                });
+        });
+
+        closeModal.addEventListener('click', () => {
+            deviceIdModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === deviceIdModal) {
+                deviceIdModal.style.display = 'none';
+            }
+        });
+
+        // Chat Widget Toggle
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWidget = document.getElementById('chatWidget');
+        const closeChat = document.getElementById('closeChat');
+
+        chatToggle.addEventListener('click', () => {
+            chatWidget.classList.toggle('active');
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWidget.classList.remove('active');
+        });
+
+        // Simple Chat Functionality
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const sendMsg = document.getElementById('sendMsg');
+
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            messageDiv.style.marginBottom = '10px';
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendMsg.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage('You', message);
+                chatInput.value = '';
+                
+                // Simulate reply after 1 second
+                setTimeout(() => {
+                    addMessage('Support', 'Thanks for your message. Our team will get back to you soon.');
+                }, 1000);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMsg.click();
+            }
+        });
+
+        // Verify the entered key
+        function verifyKey() {
+            const randomNumber = localStorage.getItem('randomNumber');
+            const userKey = document.getElementById('user-key').value.trim();
+            const correctKey = getKeyForNumber(randomNumber);
+            const loadingElement = document.getElementById('loading');
+            const messageElement = document.getElementById('message');
+
+            // Validate input
+            if (!userKey) {
+                messageElement.textContent = '❌ Please enter an access key';
+                messageElement.className = 'error';
+                return;
+            }
+
+            // Show loading animation
+            loadingElement.style.display = 'block';
+            messageElement.textContent = '';
+            messageElement.className = '';
+
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+
+                if (userKey === correctKey) {
+                    messageElement.textContent = '✅ Key Verified! Redirecting...';
+                    messageElement.className = 'success';
+                    setTimeout(() => {
+                        window.location.href = 'main.html';
+                    }, 1000);
+                } else {
+                    messageElement.textContent = '❌ Incorrect Key. Please try again.';
+                    messageElement.className = 'error';
+                }
+            }, 1500); // Simulate delay
+        }
+
+        // Hardcoded key mapping (0-20)
+        function getKeyForNumber(number) {
+            const keys = {
+                0: "Aman", 1: "T93r2", 2: "A3f9k0", 3: "U7y7a0", 4: "QU8i9", 
+                5: "5n6M8", 6: "Ls0", 7: "Hx2C34", 8: "P7R9e8", 9: "NZ4l3", 
+                10: "L9kh6", 11: "6W5hg2", 12: "76k7L9", 13: "Aman", 14: "4i1O0p9", 
+                15: "G0N1o2", 16: "M9n3a2", 17: "I65fq6", 18: "K1l2J8", 19: "O4R3e2", 
+                20: "S0a1Dk7"
+            };
+            return keys[number];
+        }
+    </script>
+</body>
 </html>
