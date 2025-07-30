@@ -3,32 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟 </title>
-    <link rel="stylesheet" href="styles 1m.css">
+    <title>Prediction AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --background: #1A202C;
+            --card-bg: #2D3748;
+            --card-inner-bg: #374151;
+            --stat-bg: #374151;
+            --text: #E2E8F0;
+            --accent: #38B2AC;
+            --border: #4A5568;
+            --hover: #4A5568;
+            --gradient-start: #38B2AC;
+            --gradient-end: #2C7A7B;
+        }
+
+        body {
+            font-family: 'El Messiri', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        .card {
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 178, 172, 0.1);
+        }
+
+        .win-btn {
+            background-color: #10B981;
+        }
+
+        .loss-btn {
+            background-color: #EF4444;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .result-display {
+            border-left: 4px solid var(--accent);
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>👑 Win Go 1Min Diu Win 👑</h1>
-       
-         <h1>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h1>
-        <h3> Welcome to the Prediction App! </h3>
-        <div class="input-group">
-            <input type="number" id="numberInput" placeholder="Enter a number (0-9)" min="0" max="9">
-            <br>
-            <button id="predictButton">Predict</button>
-         
-            <button id="category" class="betButton">Change Pre ⚙️</button>
-            <!--div id="category" class="category"></div-->
+<body class="min-h-screen p-4 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center my-6">
+            <h1 class="text-4xl font-bold text-teal-400">Prediction AI AM</h1>
+            <p class="text-gray-400">Track your predictions and performance</p>
+        </header>
+
+        <div class="grid gap-6 md:grid-cols-2">
+            <!-- Prediction Card -->
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4">Make Prediction</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block mb-2">Enter a number (0-9)</label>
+                        <input type="number" id="numberInput" min="0" max="9" 
+                            class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    </div>
+                    <button id="predictButton" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg transition">
+                        <i class="fas fa-calculator mr-2"></i>Generate Prediction
+                    </button>
+                </div>
+
+                <div id="result" class="result-display mt-6 p-4 bg-gray-800 rounded-lg hidden"></div>
+                
+                <div id="winLossButtons" class="flex gap-4 mt-4 hidden">
+                    <button id="markWinBtn" class="win-btn text-white py-2 px-4 rounded-lg flex-1">
+                        <i class="fas fa-trophy mr-2"></i>Win
+                    </button>
+                    <button id="markLossBtn" class="loss-btn text-white py-2 px-4 rounded-lg flex-1">
+                        <i class="fas fa-times mr-2"></i>Loss
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4">Your Stats</h2>
+                <div class="grid grid-cols-3 gap-4 text-center mb-6">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="text-sm text-gray-400">Wins</div>
+                        <div id="totalWins" class="text-2xl font-bold text-green-400">0</div>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="text-sm text-gray-400">Losses</div>
+                        <div id="totalLosses" class="text-2xl font-bold text-red-400">0</div>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="text-sm text-gray-400">Win Rate</div>
+                        <div id="winRatePercentage" class="text-2xl font-bold">0%</div>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-3">Prediction History</h3>
+                <div id="history" class="space-y-2 max-h-60 overflow-y-auto pr-2"></div>
+                
+                <button id="clearHistoryBtn" class="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg">
+                    <i class="fas fa-trash mr-2"></i>Clear History
+                </button>
+            </div>
         </div>
-        <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modalMessage"></p>
     </div>
-</div>
-        <div id="result" class="result"></div>
-        
-    </div>
-    <script src="script diuwin.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const predictButton = document.getElementById('predictButton');
+            const numberInput = document.getElementById('numberInput');
+            const resultDiv = document.getElementById('result');
+            const winLossButtons = document.getElementById('winLossButtons');
+            const markWinBtn = document.getElementById('markWinBtn');
+            const markLossBtn = document.getElementById('markLossBtn');
+            const totalWinsEl = document.getElementById('totalWins');
+            const totalLossesEl = document.getElementById('totalLosses');
+            const winRatePercentageEl = document.getElementById('winRatePercentage');
+            const historyEl = document.getElementById('history');
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+            // Initialize data
+            let predictionHistory = JSON.parse(localStorage.getItem('predictionHistory')) || [];
+            let winLossData = JSON.parse(localStorage.getItem('winLossData')) || { wins: 0, losses: 0 };
+
+            // Load saved data
+            updateWinLossStats();
+            renderHistory();
+
+            // Event Listeners
+            predictButton.addEventListener('click', generatePrediction);
+            markWinBtn.addEventListener('click', () => markResult('win'));
+            markLossBtn.addEventListener('click', () => markResult('loss'));
+            clearHistoryBtn.addEventListener('click', clearHistory);
+
+            // Functions
+            function generatePrediction() {
+                const number = parseInt(numberInput.value);
+                
+                if (number < 0 || number > 9 || isNaN(number)) {
+                    alert("Please enter a valid number between 0 and 9");
+                    return;
+                }
+
+                // In a real app, you would call your prediction API here
+                // This is a simplified simulation
+                const prediction = {
+                    id: Date.now(),
+                    number: number,
+                    prediction: Math.random() > 0.5 ? 'BIG' : 'SMALL',
+                    timestamp: new Date().toLocaleString(),
+                    result: null
+                };
+
+                // Display prediction
+                resultDiv.innerHTML = `
+                    <p><strong>Number:</strong> ${prediction.number}</p>
+                    <p><strong>Prediction:</strong> ${prediction.prediction}</p>
+                    <p><strong>Time:</strong> ${prediction.timestamp}</p>
+                `;
+                resultDiv.classList.remove('hidden');
+                winLossButtons.classList.remove('hidden');
+
+                // Save to history
+                predictionHistory.unshift(prediction);
+                saveHistory();
+                renderHistory();
+            }
+
+            function markResult(result) {
+                const latestPrediction = predictionHistory[0];
+                latestPrediction.result = result;
+                
+                // Update win/loss counts
+                if (result === 'win') {
+                    winLossData.wins++;
+                } else {
+                    winLossData.losses++;
+                }
+
+                // Update UI
+                resultDiv.innerHTML += `<p><strong>Result:</strong> ${result.toUpperCase()}</p>`;
+                winLossButtons.classList.add('hidden');
+                
+                // Save data
+                saveHistory();
+                saveWinLossData();
+                updateWinLossStats();
+                renderHistory();
+            }
+
+            function updateWinLossStats() {
+                totalWinsEl.textContent = winLossData.wins;
+                totalLossesEl.textContent = winLossData.losses;
+                
+                const total = winLossData.wins + winLossData.losses;
+                const winRate = total > 0 ? Math.round((winLossData.wins / total) * 100) : 0;
+                winRatePercentageEl.textContent = `${winRate}%`;
+            }
+
+            function renderHistory() {
+                historyEl.innerHTML = '';
+                predictionHistory.forEach(pred => {
+                    const resultClass = pred.result === 'win' ? 'text-green-400' : 
+                                      pred.result === 'loss' ? 'text-red-400' : 'text-gray-400';
+                    const resultText = pred.result ? pred.result.toUpperCase() : 'PENDING';
+                    
+                    const item = document.createElement('div');
+                    item.className = 'p-3 bg-gray-800 rounded-lg';
+                    item.innerHTML = `
+                        <div class="flex justify-between">
+                            <span>#${pred.number} - ${pred.prediction}</span>
+                            <span class="${resultClass}">${resultText}</span>
+                        </div>
+                        <div class="text-sm text-gray-400">${pred.timestamp}</div>
+                    `;
+                    historyEl.appendChild(item);
+                });
+            }
+
+            function clearHistory() {
+                if (confirm("Are you sure you want to clear all history?")) {
+                    predictionHistory = [];
+                    winLossData = { wins: 0, losses: 0 };
+                    
+                    saveHistory();
+                    saveWinLossData();
+                    updateWinLossStats();
+                    renderHistory();
+                    
+                    resultDiv.classList.add('hidden');
+                    winLossButtons.classList.add('hidden');
+                }
+            }
+
+            function saveHistory() {
+                localStorage.setItem('predictionHistory', JSON.stringify(predictionHistory));
+            }
+
+            function saveWinLossData() {
+                localStorage.setItem('winLossData', JSON.stringify(winLossData));
+            }
+        });
+    </script>
 </body>
 </html>
