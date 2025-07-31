@@ -1,33 +1,470 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟 </title>
-    <link rel="stylesheet" href="styles 1m.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Kanit&display=swap" rel="stylesheet">
+  <style>
+  :root {
+  --primary: #00f0ff;
+  --secondary: #7a00ff;
+  --accent: #ff00aa;
+  --bg-dark: #0a0a18;
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8d8;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(to bottom, #0a0a18, #081018);
+  color: var(--text-primary);
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  background: rgba(20, 20, 40, 0.9);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 0 16px rgba(0,240,255,0.1);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.dashboard-content {
+  display: flex;
+  gap: 12px;
+}
+
+.stats-panel {
+  background: rgba(10,10,25,0.8);
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  text-align: center;
+}
+
+.panel-title {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Number Visualization */
+.number-visualization {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+}
+
+.number-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.number-rings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--primary);
+  border-right-color: var(--secondary);
+  border-bottom-color: var(--accent);
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Prediction Value */
+.prediction-value {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.big {
+  background: linear-gradient(to right, var(--primary), #0055ff);
+  color: black;
+}
+
+.small {
+  background: linear-gradient(to right, var(--accent), #990066);
+  color: white;
+}
+
+/* Web View Section */
+.web-view-section {
+  background: rgba(10, 10, 25, 0.8);
+  border-radius: 14px;
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 0 16px rgba(122, 0, 255, 0.2);
+}
+
+.web-view-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.control-button {
+  background: linear-gradient(to right, var(--secondary), #5a00cc);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Kanit', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(122, 0, 255, 0.3);
+}
+
+#webViewFrame {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: black;
+}
+
+/* Popup Styles */
+.result-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 100;
+  border: 1px solid var(--primary);
+  display: none;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-message {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.popup-timer {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .dashboard {
+    width: 400px;
+    flex-shrink: 0;
+  }
+  
+  .web-view-section {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 40px);
+  }
+  
+  #webViewFrame {
+    height: calc(100% - 50px);
+  }
+}
+
+@media (max-width: 767px) {
+  .web-view-section.active {
+    display: flex;
+    margin-top: 20px;
+  }
+}
+
+  
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Win Go 1Min 6club</h1>
-         <h1>𓄂⍣⃝🦋AM VIP⍣⃟❤️‍🩹𝄟</h1>
-        <h3>Welcome to the Prediction App!</h3>
-        <div class="input-group">
-            <input type="number" id="numberInput" placeholder="Enter a number (0-9)" min="0" max="9">
-            <br>
-            <button id="predictButton">Predict</button>
-            <button id="category" class="betButton">Change Pre ⚙️</button>
-            <!--div id="category" class="category"></div-->
+  <div class="app-container">
+    <!-- Prediction Dashboard -->
+    <div class="dashboard">
+      <div class="dashboard-header">
+        <div class="title">Prediction System</div>
+        <div class="timestamp" id="timestamp">--:--:--</div>
+      </div>
+      <div class="dashboard-content">
+        <div class="stats-panel">
+          <div class="panel-title">Current Number</div>
+          <div class="number-visualization">
+            <div class="number-rings"></div>
+            <div class="number-circle" id="number">0</div>
+          </div>
         </div>
-        <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modalMessage"></p>
+        <div class="stats-panel">
+          <div class="panel-title">Prediction</div>
+          <div class="prediction-value" id="label">Loading...</div>
+        </div>
+      </div>
     </div>
-</div>
-        <div id="result" class="result"></div>
-        
-    </div>
-    <script src="script.js"></script>
+
+    <!-- Web View Section -->
+    <div class="web-view-section">
+      <div class="web-view-controls">
+        <button id="toggleWebView" class="control-button">
+          <span class="button-icon">🌐</span>
+          <span class="button-text">Show Web View</span>
+        </button>
+        <button id="refreshWebView" class="control-button">
+          <span class="button-icon">🔄</span>
+          <span class="button-text">Refresh</span>
+        </button>
+      </div>
+      
+
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  
+  <!-- App JavaScript -->
+  <script>
+// Firebase Configuration
+const firebaseConfig = {
+  databaseURL: "https://trytowebhacker-default-rtdb.firebaseio.com"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// DOM Elements
+const elements = {
+  number: document.getElementById('number'),
+  label: document.getElementById('label'),
+  timestamp: document.getElementById('timestamp'),
+  toggleWebView: document.getElementById('toggleWebView'),
+  refreshWebView: document.getElementById('refreshWebView'),
+  webViewFrame: document.getElementById('webViewFrame'),
+  webResultPopup: document.getElementById('webResultPopup'),
+  countdown: document.getElementById('countdown')
+};
+
+// Constants
+const PREDICTION_RANGES = {
+  big: [5, 6, 7, 8, 9],
+  small: [0, 1, 2, 3, 4]
+};
+
+// App State
+let currentPeriod = "";
+
+// Utility Functions
+const utils = {
+  getCurrentPeriod: () => {
+    const now = new Date();
+    const yyyyMMdd = now.toISOString().split('T')[0].replace(/-/g, '');
+    const h = now.getHours().toString().padStart(2, '0');
+    const m = now.getMinutes().toString().padStart(2, '0');
+    return `${yyyyMMdd}_${h}${m}`;
+  },
+  
+  updateTime: () => {
+    elements.timestamp.textContent = new Date().toLocaleTimeString();
+  },
+  
+  showPopup: (message, duration = 3000) => {
+    elements.webResultPopup.querySelector('.popup-message').textContent = message;
+    elements.webResultPopup.style.display = 'block';
+    
+    if (duration) {
+      setTimeout(() => {
+        elements.webResultPopup.style.display = 'none';
+      }, duration);
+    }
+  }
+};
+
+// Prediction Logic
+const prediction = {
+  generateRandom: () => {
+    const isBig = Math.random() < 0.5;
+    const type = isBig ? 'big' : 'small';
+    return {
+      number: PREDICTION_RANGES[type][Math.floor(Math.random() * PREDICTION_RANGES[type].length)],
+      label: type.toUpperCase(),
+      mode: 'auto'
+    };
+  },
+  
+  updateUI: (num, label) => {
+    elements.number.textContent = num;
+    elements.label.textContent = label;
+    elements.label.className = `prediction-value ${label.toLowerCase()}`;
+    
+    // Show popup when prediction changes
+    utils.showPopup(`NEW PREDICTION: ${label} ${num}`, 2000);
+  }
+};
+
+// Firebase Operations
+const database = {
+  fetchOrCreate: () => {
+    const period = utils.getCurrentPeriod();
+    if (period === currentPeriod) return;
+    
+    currentPeriod = period;
+    const ref = db.ref(`prediction_data/${period}`);
+    
+    ref.once('value').then(snap => {
+      const data = snap.val();
+      if (data?.number !== undefined) {
+        prediction.updateUI(data.number, data.label);
+      } else {
+        const newPrediction = prediction.generateRandom();
+        ref.set(newPrediction)
+          .then(() => prediction.updateUI(newPrediction.number, newPrediction.label))
+          .catch(error => console.error('Firebase write error:', error));
+      }
+    }).catch(error => {
+      console.error('Firebase read error:', error);
+      const localPrediction = prediction.generateRandom();
+      prediction.updateUI(localPrediction.number, localPrediction.label);
+    });
+  }
+};
+
+// Web View Controller
+const webView = {
+  init: function() {
+    this.bindEvents();
+    this.setupCountdown();
+    
+    // Auto-show on desktop
+    if (window.innerWidth >= 768) {
+      document.querySelector('.web-view-section').style.display = 'flex';
+    }
+  },
+  
+  bindEvents: function() {
+    elements.toggleWebView.addEventListener('click', this.toggle.bind(this));
+    elements.refreshWebView.addEventListener('click', this.refresh.bind(this));
+  },
+  
+  toggle: function() {
+    const section = document.querySelector('.web-view-section');
+    section.classList.toggle('active');
+    
+    const isVisible = section.classList.contains('active') || window.innerWidth >= 768;
+    elements.toggleWebView.querySelector('.button-text').textContent = 
+      isVisible ? 'Hide Web View' : 'Show Web View';
+  },
+  
+  refresh: function() {
+    elements.webViewFrame.src = elements.webViewFrame.src;
+    utils.showPopup('Refreshing web view...', 1500);
+  },
+  
+  setupCountdown: function() {
+    let seconds = 60;
+    const updateCountdown = () => {
+      elements.countdown.textContent = seconds;
+      seconds--;
+      
+      if (seconds < 0) {
+        seconds = 60;
+        utils.showPopup('New prediction period starting soon...', 3000);
+      }
+    };
+    
+    setInterval(updateCountdown, 1000);
+  }
+};
+
+// Initialize App
+function init() {
+  utils.updateTime();
+  database.fetchOrCreate();
+  webView.init();
+  
+  // Update every second
+  setInterval(() => {
+    utils.updateTime();
+    database.fetchOrCreate();
+  }, 1000);
+}
+
+// Start the application
+document.addEventListener('DOMContentLoaded', init);
+  
+  </script>
 </body>
 </html>
