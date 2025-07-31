@@ -230,7 +230,10 @@
         }
 
         #deviceIdBtn {
-            background: none;
+             
+                                  width: 50%;
+                     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
             border: none;
             color: var(--secondary-color);
             cursor: pointer;
