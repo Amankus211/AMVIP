@@ -70,71 +70,8 @@
 
       </div>
       
-      <nav class="sidebar-nav">
-        
-        <!-- Primary Top Nav -->
-        <ul class="nav-list primary-nav">
-          <li class="nav-item">
-            <a href="navig2.html" class="nav-link">
-              <span class="material-symbols-rounded">dashboard</span>
-              <span class="nav-label">Dashboard</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Dashboard</a></li>
-            </ul>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown-container">
-            <a href="#" class="nav-link dropdown-toggle">
-              <span class="material-symbols-rounded">calendar_today</span>
-              <span class="nav-label">Game hack</span>
-              <span class="dropdown-icon material-symbols-rounded">keyboard_arrow_down</span>
-            </a>
-            <!-- Dropdown Menu -->
-            <ul class="dropdown-menu">
-                  <li class="nav-item"><a href="number small.html" class="nav-link dropdown-link">Number Small</a></li>
-           
-              <li class="nav-item"><a class="nav-link dropdown-title">BIG /SMALL</a></li>
-              <li class="nav-item"><a href="bigg/PW PASS.html" class="nav-link dropdown-link">Small big</a></li>
-              <li class="nav-item"><a href="big4 small4.html" class="nav-link dropdown-link">bigv4/small4 full</a></li>
-                <li class="nav-item"><a href="coloer app.html" class="nav-link dropdown-link">Coloer BIG</a></li>
-                <li class="nav-item"><a href="1 MIN/tashan win new.html" class="nav-link dropdown-link">Coloer vip</a></li>
-             <li class="nav-item"><a href="number p/51 club.html" class="nav-link dropdown-link">Number VIP</a></li>
-             
-            
-            </ul>
-          </li>
-         
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="material-symbols-rounded">settings</span>
-              <span class="nav-label">Settings</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Settings</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- Secondary Bottom Nav -->
-        <ul class="nav-list secondary-nav">
-          <li class="nav-item">
-            <a href="https://t.me/Am_vip_1/?text=*HELLO-SIR" class="nav-link">
-              <span class="material-symbols-rounded">help</span>
-              <span class="nav-label">Support</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Support</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="index.html" class="nav-link">
-              <span class="material-symbols-rounded">logout</span>
-              <span class="nav-label">Sign Out</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item"><a class="nav-link dropdown-title">Sign Out</a></li>
-            </ul>
-          </li>
+      
+          
         </ul>
       </nav>
       </aside>
@@ -149,7 +86,7 @@
       
 
         <h2>𓄂⍣⃝🦋 AM VIP⍣⃟❤️‍🩹𝄟</h2>
-</div>
+</div
         <h1> leve 1-4</h1>
     
          <div class="container2">
@@ -170,198 +107,134 @@
     <script src="nn.js"></script>
     
     <script>
-  const popupOverlay = document.getElementById("popupOverlay");
-  const registerButton = document.getElementById("registerButton");
-  const cancelButton = document.getElementById("cancelButton");
 
-  // Function to hide the popup after 1 minute
-  function hidePopup() {
-    setTimeout(function() {
-      popupOverlay.style.display = "none";
-    }, 60000); // 1 minute in milliseconds
-  }
-  function login() {
-      const password = document.getElementById('password').value;
-      
-      if (password === '') {
-        document.getElementById('loginPage').classList.add('hidden');
-        document.getElementById('mainPage').classList.remove('hidden');
-      } else {
-        alert('Access Denied: Invalid credentials');
-      }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const predictedNumberElement = document.getElementById('predictedNumber'); // Will show Big/Small
+  const predictedPremiumElement = document.getElementById('predictedPremium');
+  const timerElement = document.getElementById('timeRemaining');
+  const issueNumberElement = document.getElementById('issueNumber');
+  const loadingElement = document.getElementById('loading');
 
-  // Function to start the timer and show the cancel button
-  function startTimer() {
-    setTimeout(function() {
-      cancelButton.style.display = "block";
-    }, 60000); // 1 minute in milliseconds
-  }
+  let currentIssueNumber = null;
+  let timerInterval = null;
 
-  // Function to handle cancel button click
-  function handleCancel() {
-    popupOverlay.style.display = "none";
-  }
-
-  // Automatically display the popup when the page loads
-  window.onload = function() {
-    if (!localStorage.getItem("registered")) {
-      popupOverlay.style.display = "flex";
-      registerButton.addEventListener("click", function() {
-        localStorage.setItem("registered", "true");
-        startTimer(); // Start the timer when "Register" is clicked
-        hidePopup(); // Automatically hide popup after 1 minute
-      });
-      cancelButton.addEventListener("click", handleCancel);
-    }
+  const API_CONFIG = {
+    typeId: 1,
+    language: 0,
+    random: "e7fe6c090da2495ab8290dac551ef1ed",
+    signature: "1F390E2B2D8A55D693E57FD905AE73A7"
   };
-</script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const predictedNumberElement = document.getElementById('predictedNumber');
-    const predictedPremiumElement = document.getElementById('predictedPremium');
-    const timerElement = document.getElementById('timeRemaining');
-    const issueNumberElement = document.getElementById('issueNumber');
-    const loadingElement = document.getElementById('loading');
-
-    let currentIssueNumber = null;
-    let timerInterval = null;
-
-    const fetchGameIssue = () => {
-      const requestData = {
-        typeId: 1,
-        language: 0,
-        random: "e7fe6c090da2495ab8290dac551ef1ed",
-        signature: "1F390E2B2D8A55D693E57FD905AE73A7",
-        timestamp: Math.floor(Date.now() / 1000)
-      };
-
-      return fetch('https://api.bdg88zf.com/api/webapi/GetGameIssue', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8',
-            'Accept': 'application/json, text/plain, */*'
-          },
-          body: JSON.stringify(requestData)
-        })
-        .then(response => response.json())
-        .catch(error => console.error('Error fetching game issue:', error));
+  const fetchGameIssue = () => {
+    const requestData = {
+      ...API_CONFIG,
+      timestamp: Math.floor(Date.now() / 1000)
     };
 
-    const categorizeNumber = (number) => {
-      return number >= 5 ? 'Big' : 'Small';
-    };
+    return fetch('https://api.bdg88zf.com/api/webapi/GetGameIssue', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json, text/plain, */*'
+      },
+      body: JSON.stringify(requestData)
+    }).then(res => res.json()).catch(err => {
+      console.error('Fetch error:', err);
+    });
+  };
 
-    const generateRandomPrediction = () => {
-      const randomNumber = Math.floor(Math.random() * 10);
-      return {
-        number: randomNumber,
-        category: categorizeNumber(randomNumber),
-        premium: 'N/A'
-      };
-    };
+  // Only return Big or Small + premium
+  const generateRandomPrediction = () => {
+    const category = Math.random() < 0.5 ? 'Big' : 'Small';
+    const premium = (Math.random() * 9 + 1).toFixed(2); // 1.00 - 9.99
+    return { category, premium };
+  };
 
-    const updatePrediction = (newIssueNumber) => {
-      if (currentIssueNumber !== newIssueNumber) {
-        currentIssueNumber = newIssueNumber;
-        issueNumberElement.textContent = `🎯Period🧮: ${currentIssueNumber}`;
+  const updatePrediction = (issueNumber) => {
+    if (currentIssueNumber === issueNumber) return;
 
-        loadingElement.style.display = 'block'; // Show loading
+    currentIssueNumber = issueNumber;
+    issueNumberElement.textContent = `Period: ${currentIssueNumber}`;
+    loadingElement.style.display = 'block';
 
+    setTimeout(() => {
+      const prediction = generateRandomPrediction();
+
+      predictedNumberElement.textContent = `Bet on: ${prediction.category}`;
+      predictedPremiumElement.textContent = `Predicted Premium: ${prediction.premium}`;
+      sessionStorage.setItem('lastPrediction', JSON.stringify(prediction));
+
+      loadingElement.style.display = 'none';
+    }, 2000);
+  };
+
+  const updateTimer = () => {
+    fetchGameIssue().then(data => {
+      if (!data?.data) return;
+
+      const { endTime, issueNumber } = data.data;
+      const now = new Date();
+      const end = new Date(endTime);
+      const msLeft = end - now;
+
+      if (msLeft <= 0) {
+        timerElement.textContent = "00:00";
+        clearInterval(timerInterval);
         setTimeout(() => {
-          const currentPrediction = generateRandomPrediction();
-          predictedNumberElement.textContent = `Bet on🎱: ${currentPrediction.number} (${currentPrediction.category})`;
-          predictedPremiumElement.textContent = `Predicted Premium: ${currentPrediction.premium}`;
-
-          // Store prediction in sessionStorage
-          sessionStorage.setItem('lastPrediction', JSON.stringify(currentPrediction));
-
-          loadingElement.style.display = 'none'; // Hide loading
-        }, 2000);
+          fetchGameIssue().then(newData => {
+            if (newData?.data) {
+              updatePrediction(newData.data.issueNumber);
+              timerInterval = setInterval(updateTimer, 1000);
+            }
+          });
+        }, 3000);
+      } else {
+        const mins = String(Math.floor(msLeft / 60000)).padStart(2, '0');
+        const secs = String(Math.floor((msLeft % 60000) / 1000)).padStart(2, '0');
+        timerElement.textContent = `${mins}:${secs}`;
       }
-    };
 
-    const updateTimer = () => {
-      fetchGameIssue()
-        .then(data => {
-          if (!data.data) {
-            console.error('No data received for game issue.');
-            return;
-          }
-
-          const { endTime, issueNumber } = data.data;
-          const endDate = new Date(endTime);
-          const now = new Date();
-          const remainingTimeMs = endDate - now;
-
-          if (remainingTimeMs <= 0) {
-            timerElement.textContent = "00:00";
-            clearInterval(timerInterval);
-
-            setTimeout(() => {
-              fetchGameIssue().then(data => {
-                if (!data.data) {
-                  console.error('No data received for new game issue.');
-                  return;
-                }
-
-                const newIssueNumber = data.data.issueNumber;
-                updatePrediction(newIssueNumber);
-                timerInterval = setInterval(updateTimer, 1000);
-              });
-            }, 3000);
-
-          } else {
-            const minutes = String(Math.floor((remainingTimeMs % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((remainingTimeMs % (1000 * 60)) / 1000)).padStart(2, '0');
-            timerElement.textContent = `${minutes}:${seconds}`;
-          }
-
-          if (currentIssueNumber !== issueNumber) {
-            updatePrediction(issueNumber);
-          }
-        })
-        .catch(error => console.error('Error fetching game issue:', error));
-    };
-
-    const initializePrediction = () => {
-      fetchGameIssue().then(data => {
-        if (!data.data) {
-          console.error('No data received for initial game issue.');
-          return;
-        }
-
-        const initialIssueNumber = data.data.issueNumber;
-        const storedPrediction = sessionStorage.getItem('lastPrediction');
-        const lastPrediction = storedPrediction ? JSON.parse(storedPrediction) : null;
-
-        if (lastPrediction) {
-          predictedNumberElement.textContent = `Bet On 🎱: ${lastPrediction.number} (${lastPrediction.category})`;
-          predictedPremiumElement.textContent = `Predicted Premium 🎱: ${lastPrediction.premium}`;
-        } else {
-          updatePrediction(initialIssueNumber);
-        }
-      });
-    };
-
-    // Visibility change event to update prediction when the tab becomes active
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible') {
-        fetchGameIssue().then(data => {
-          if (!data.data) {
-            console.error('No data received for new game issue.');
-            return;
-          }
-          const newIssueNumber = data.data.issueNumber;
-          updatePrediction(newIssueNumber);
-        });
+      if (currentIssueNumber !== issueNumber) {
+        updatePrediction(issueNumber);
       }
     });
+  };
 
-    timerInterval = setInterval(updateTimer, 1000);
-    initializePrediction();
+  const initialize = () => {
+    fetchGameIssue().then(data => {
+      if (!data?.data) return;
+
+      const issueNumber = data.data.issueNumber;
+      const stored = sessionStorage.getItem('lastPrediction');
+
+      if (stored) {
+        const prediction = JSON.parse(stored);
+        predictedNumberElement.textContent = `Bet on: ${prediction.category}`;
+        predictedPremiumElement.textContent = `Predicted Premium: ${prediction.premium}`;
+      } else {
+        updatePrediction(issueNumber);
+      }
+    });
+  };
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      fetchGameIssue().then(data => {
+        if (data?.data && data.data.issueNumber !== currentIssueNumber) {
+          updatePrediction(data.data.issueNumber);
+        }
+      });
+    }
   });
+
+  timerInterval = setInterval(updateTimer, 1000);
+  initialize();
+});
+
+      
+
+
+      
 </script>
   
   </body>
