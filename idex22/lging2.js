@@ -115,7 +115,7 @@
 
             // Validate input
             if (!userKey) {
-                messageElement.textContent = '❌ Please enter an access key';
+                messageElement.textContent = '❌ Please enter an user id key';
                 messageElement.className = 'error';
                 return;
             }
@@ -129,13 +129,13 @@
                 loadingElement.style.display = 'none';
 
                 if (userKey === correctKey) {
-                    messageElement.textContent = '✅ Key Verified! Redirecting...';
+                    messageElement.textContent = '✅ Key Verified..';
                     messageElement.className = 'success';
                     setTimeout(() => {
                         window.location.href = 'navig2.html';
                     }, 1000);
                 } else {
-                    messageElement.textContent = '❌ Incorrect Key. Please try again.';
+                    messageElement.textContent = '❌ Key. Please try again.';
                     messageElement.className = 'error';
                 }
             }, 1500); // Simulate delay
