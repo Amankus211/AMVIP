@@ -144,10 +144,10 @@
         // Hardcoded key mapping (0-20)
         function getKeyForNumber(number) {
             const keys = {
-                0: "AMVIP", 1: "T93r2", 2: "A3f9k0", 3: "U7y7a0", 4: "Shbnf", 
+                0: "AMVIP1", 1: "T93r2", 2: "A3f9k0", 3: "U7y7a0", 4: "Shbnf", 
                 5: "5n6M8", 6: "Ls0", 7: "Hx2C34", 8: "P7R9e8", 9: "NZ4l3", 
                 10: "L9kh6", 11: "6W5hg2", 12: "", 13: "", 14: "4i1O0p9", 
-                15: "36hk2", 16: "Shubh2", 17: "I65fq6", 18: "K1l2J8", 19: "O4R3e2", 
+                15: "36hk2", 16: "Shuhs", 17: "I65fq6", 18: "K1l2J8", 19: "O4R3e2", 
                 20: "Shvjy"
             };
             return keys[number];
